@@ -1,4 +1,4 @@
-package se.kth.archiLang.malInterface;
+package se.kth.archiLang.malInterface.metaElements;
 
 public enum RelationEnum {
     AND {

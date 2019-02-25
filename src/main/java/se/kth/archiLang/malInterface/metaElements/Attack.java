@@ -1,4 +1,4 @@
-package se.kth.archiLang.malInterface;
+package se.kth.archiLang.malInterface.metaElements;
 
 import java.util.List;
 
