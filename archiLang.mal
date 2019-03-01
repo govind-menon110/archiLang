@@ -1,0 +1,321 @@
+// archiLang
+// Author: Sotirios Katsikeas (sotkat@kth.se)
+// Date: March 2019
+
+// Motivation elements are used to model the motivations, or reasons, that guide the design or change of an Enterprise Architecture. It is not a layer but an aspect!
+category Motivation {
+
+	asset Stakeholder
+	{
+
+	}
+
+	asset Driver
+	{
+
+	}
+
+	asset Assesment
+		info: "Assesment motivation element represents a threat in our case"
+	{
+
+	}
+
+	asset Goal
+	{
+
+	}
+
+	asset Outcome
+	{
+
+	}
+
+	asset Principle
+	{
+
+	}
+
+	asset Requirement
+	{
+
+	}
+
+	asset Constraint
+	{
+
+	}
+
+	asset Meaning
+	{
+
+	}
+
+	asset Value
+	{
+
+	}
+
+}
+
+// Strategy Layer of ArchiMate
+category Strategy {
+
+	asset Resource
+	{
+
+	}
+
+	asset Capability
+	{
+
+	}
+
+	asset CourseOfAction
+	{
+
+	}
+
+}
+
+// Business Layer of ArchiMate
+category Business {
+
+	asset BusinessActor
+	{
+
+	}
+
+	asset BusinessRole
+	{
+
+	}
+
+	asset BusinessCollaboration
+	{
+
+	}
+
+	asset BusinessInterface
+	{
+
+	}
+
+	asset BusinessProcess
+	{
+
+	}
+
+	asset BusinessFunction
+	{
+
+	}
+
+	asset BussinesInteraction
+	{
+
+	}
+
+	asset BusinessEvent
+	{
+
+	}
+
+	asset BusinessService
+	{
+
+	}
+
+	asset BusinessObject
+	{
+
+	}
+
+	asset Contract
+	{
+
+	}
+
+	asset Representation
+	{
+
+	}
+
+	asset Product
+	{
+
+	}
+
+}
+
+category Application {
+
+	asset AppComponent
+	{
+
+	}
+
+	asset AppCollaboration
+	{
+
+	}
+
+	asset AppInterface
+	{
+
+	}
+
+	asset AppFunction
+	{
+
+	}
+
+	asset AppInteraction
+	{
+
+	}
+
+	asset AppProcess
+	{
+
+	}
+
+	asset AppEvent
+	{
+
+	}
+
+	asset AppService
+	{
+
+	}
+
+	asset DataObject extends Data
+	{
+
+	}
+}
+
+category Technology {
+
+	asset Node
+	{
+
+	}
+
+	asset Device extends Machine
+	{
+
+	}
+
+	asset SystemSoftware extends Software
+	{
+
+	}
+
+	asset TechCollaboration
+	{
+
+	}
+
+	asset TechInterface
+	{
+
+	}
+
+	asset Path
+	{
+
+	}
+
+	asset CommunicationNetwork extends Network
+	{
+
+	}
+
+	asset TechFunction
+	{
+
+	}
+
+	asset TechProcess
+	{
+
+	}
+
+	asset TechInteraction
+	{
+
+	}
+
+	asset TechEvent
+	{
+
+	}
+
+	asset TechService extends Service
+	{
+
+	}
+
+	asset Artifact
+	{
+
+	}
+}
+
+category Physical {
+
+	asset Equipment extends PhysicalMachine
+	{
+
+	}
+
+	asset Facility
+	{
+
+	}
+
+	asset DistributionNetwork
+	{
+
+	}
+
+	asset Material
+	{
+
+	}
+}
+
+category ImplementationAndMigration {
+
+	asset WorkPackage
+	{
+
+	}
+
+	asset Deliverable
+	{
+
+	}
+
+	asset ImplementationEvent
+	{
+
+	}
+
+	asset Plateu
+	{
+
+	}
+
+	asset Gap
+	{
+
+	}
+
+}
+
+associations {
+	// PROBLEM HERE
+}
