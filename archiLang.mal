@@ -150,6 +150,12 @@ category Business {
 
 category Application {
 
+	abstractAsset ApplicationEntity
+		info: "Used for the association between assets in the Application Layer"
+	(
+
+	)
+
 	asset AppComponent
 	{
 
@@ -190,7 +196,7 @@ category Application {
 
 	}
 
-	asset DataObject extends Data
+	asset DataObject extends ApplicationEntity // Represents Data
 	{
 
 	}
@@ -198,17 +204,23 @@ category Application {
 
 category Technology {
 
+	abstractAsset TechnologyEntity
+		info: "Used for the association between assets in the Technology Layer"
+	(
+
+	)
+
 	asset Node
 	{
 
 	}
 
-	asset Device extends Machine
+	asset Device extends TechnologyEntity // Represents Machine
 	{
 
 	}
 
-	asset SystemSoftware extends Software
+	asset SystemSoftware extends TechnologyEntity // Represents Software
 	{
 
 	}
@@ -228,7 +240,7 @@ category Technology {
 
 	}
 
-	asset CommunicationNetwork extends Network
+	asset CommunicationNetwork extends TechnologyEntity // Represents Network
 	{
 
 	}
@@ -253,7 +265,7 @@ category Technology {
 
 	}
 
-	asset TechService extends Service
+	asset TechService extends TechnologyEntity // Represents Service
 	{
 
 	}
@@ -317,5 +329,6 @@ category ImplementationAndMigration {
 }
 
 associations {
-	// PROBLEM HERE
+	ApplicationEntity [applicationIn] * <-- ApplicationAssociation --> * [applicationOut] ApplicationEntity
+	TechnologyEntity [technologyIn] * <-- TechnologyAssociation --> * [technologyOut] TechnologyEntity
 }
