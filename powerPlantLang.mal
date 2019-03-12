@@ -1,0 +1,160 @@
+// powerPlantLang
+// Author: Sotirios Katsikeas (sotkat@kth.se)
+// Date: March 2019
+
+include archiLang.mal
+
+category MainCategory {
+
+	asset PowerPlant extends Facility
+		info: "Includes all the threats/attacks as specified on the Threats view of the ArchiMate model"
+	{
+		| plantDamage
+			-> powerOutage
+
+		| powerOutage
+			-> //TODO
+
+		| _abstractEvent
+			-> plantDamage
+	}
+
+	asset FeedWaterTank extends Equipment
+	{
+
+	}
+
+	asset Heater extends ControlledSystem
+	{
+		| thermalShocks
+			-> plant.powerOutage
+
+		| materialFailure
+			-> plant.powerOutage
+	}
+
+	asset Cooler extends ControlledSystem
+	{
+		| influence
+			-> influenceCooling
+
+		| influenceCooling
+			-> lubrication.reducedFlow
+
+		| shutDown
+			-> plant.powerOutage
+	}
+
+	asset RotatingEquipment extends ControlledSystem
+	{
+		| systemFailure
+			-> plant._abstractEvent
+
+		| overspeed
+			-> systemFailure
+
+	}
+
+	asset Auxilaries extends ControlledSystem
+	{
+		| shutDownAuxilaries
+			-> system.systemFailure
+
+		| shutDownBlowers
+			-> heater.thermalShocks
+
+	}
+
+	asset Controller extends Equipment
+	{
+		| closeValves
+			-> cooler.shutDown
+
+		| reduceFlow
+			-> heater.materialFailure
+
+		| blocking
+			-> rotatingEquipment.overspeed
+
+		| _influenceMeasurement
+			-> controlledSystem.influence
+
+	}
+
+	asset ControlledSystem extends Equipment
+	{
+		| influence
+
+		| systemFailure
+	}
+
+	asset Pump extends ControlledSystem
+	{
+		| systemFailure
+			-> plant._abstractEvent
+	}
+
+	asset SealSystem extends ControlledSystem
+	{
+		| steamLeakage
+			-> fire
+
+		| fire
+			-> lubrication.fire
+	}
+
+	asset Lubrication extends Equipment
+	{
+		| fire
+			-> //TODO
+		| explosion
+			-> //TODO
+
+		| reducedFlow
+			-> rotatingEquipment.systemFailure
+
+		| extractVapor
+			->	explosion,
+				fire
+	}
+
+	asset Measurements extends Equipment
+	{
+		| conditionMonitoringBlocked
+			-> influenceMeasurement
+
+		| influenceMeasurement
+			-> controller._influenceMeasurement
+	}
+
+}
+
+associations {
+	PowerPlant 	[plant]				1 <--	PlantControlledSystem		-->	*	[system]			ControlledSystem
+		info: "A plant has many controlled systems"
+	PowerPlant	[plant]				1 <--	PlantFeedWaterTank			--> *	[feedWaterTank]		FeedWaterTank
+	PowerPlant	[plant]				1 <--	PlantController				--> *	[controllers]		Controller
+	PowerPlant	[plant]				1 <--	PlantAuxilaries				--> *	[auxilaries]		Auxilaries
+	PowerPlant	[plant]				1 <--	PlantCooler					--> *	[coolers]			Cooler
+	PowerPlant	[plant]				1 <--	PlantHeater					--> *	[heaters]			Heater
+	PowerPlant	[plant]				1 <--	PlantRotatingEquipment 		--> *	[rotatingEquipment]	RotatingEquipment
+
+	Controller 	[controller] 		1 <-- 	SystemController			--> *	[controlledSystem]	ControlledSystem
+		info: "Every controller controls one or more controlled system(s)"
+	Controller 	[controller] 		1 <-- 	CoolerController			--> 1	[cooler]			Cooler
+	Controller 	[controller] 		1 <-- 	RotatingEquipmentontroller 	--> 1	[rotatingEquipment]	RotatingEquipment
+	Auxilaries 	[auxilaries] 		1 <-- 	SystemAuxilaries			--> *	[system]			ControlledSystem
+		info: "A controlled system may have system auxilaries"
+	Auxilaries 	[auxilaries] 		1 <-- 	PumpAuxilaries				--> 1	[pump]				Pump
+	Auxilaries 	[auxilaries] 		1 <-- 	HeaterAuxilaries			--> 1	[heater]			Heater
+
+	SealSystem 	[sealSystem] 		1 <-- 	SealSystemLubrication		--> 1	[lubrication]		Lubrication
+	Cooler 		[cooler] 			1 <-- 	CoolerLubrication			--> 1	[lubrication]		Lubrication
+
+	Lubrication [lubrication]		1 <--	RotatingEquipmentLubrication--> 1	[rotatingEquipment]	RotatingEquipment
+		info: "RotatingEquipment has lubrication"
+
+	ControlledSystem [system]		1 <--	SystemRotatingEquipment		--> *	[rotatingEquipment]	RotatingEquipment
+		info: "A controlled system may have rotating equipemnt(s)"
+
+}
