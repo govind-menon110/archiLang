@@ -1,6 +1,7 @@
 package se.kth.archiLang.archiMalAdapter;
 
 import se.kth.archiLang.generated.archimate3.ElementType;
+import se.kth.archiLang.generated.archimate3.PropertyDefinitionType;
 import se.kth.archiLang.generated.archimate3.PropertyType;
 
 public class PropertyExtractor {
@@ -11,10 +12,13 @@ public class PropertyExtractor {
     }
 
     public String get(String type, ElementType element) {
-        for (PropertyType property : element.getProperties().getProperty()) {
-            if (property.getPropertyDefinitionRef().toString().equals(propertyDefContainer.getPropertyDefinitionRef(type)))
-                return property.getValue().get(0).getValue();
+        if (element.getProperties() != null && element.getProperties().getProperty() != null) {
+            for (PropertyType property : element.getProperties().getProperty()) {
+                if (((PropertyDefinitionType) property.getPropertyDefinitionRef()).getIdentifier().equals(
+                        propertyDefContainer.getPropertyDefinitionRef(type)))
+                    return property.getValue().get(0).getValue();
+            }
         }
-        return null;
+        return "";
     }
 }

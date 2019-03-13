@@ -1,46 +1,47 @@
 package se.kth.archiLang.archiMalAdapter;
 
+import se.kth.archiLang.generated.archimate3.ElementType;
 import se.kth.archiLang.generated.archimate3.RelationshipType;
 import se.kth.archiLang.generated.archimate3.RelationshipTypeEnum;
-import se.kth.archiLang.generated.archimate3.RelationshipsType;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class RelationContainer {
-    private RelationshipsType relationshipsType;
+    private List<RelationshipType> relations;
+    private List<ElementType> elements;
 
-    public RelationContainer(RelationshipsType relationshipsType) {
-        this.relationshipsType = relationshipsType;
+    public RelationContainer(List<RelationshipType> relations, List<ElementType> elements) {
+        this.relations = relations;
+        this.elements = elements;
     }
 
-    public List<String> getOtherElements(RelationshipTypeEnum relationshipTypeEnum, String identifier) {
-        List<String> otherElements = new LinkedList<>();
+    public List<Relation> getRelation(String identifier, RelationshipTypeEnum typeEnum, Boolean source) {
+        List<Relation> result = new LinkedList<>();
 
-        for (RelationshipType relationshipType : relationshipsType.getRelationship()) {
-            if (relationshipType.getSource().toString().equals(identifier) && isRightRelationType(relationshipType, relationshipTypeEnum)) {
-                otherElements.add(relationshipType.getTarget().toString());
+        for (RelationshipType relation : relations) {
+            if (typeEnum.value().equals(relation.getClass().getSimpleName())) {
+                if ((source && relation.getSource().equals(identifier)) ||
+                        (!source && relation.getTarget().equals(identifier))) {
+                    result.add(
+                            new Relation(
+                                    getNameOfElement(relation.getSource().toString()),
+                                    getNameOfElement(relation.getTarget().toString())
+                            )
+                    );
+                }
             }
         }
 
-        return otherElements;
+        return result;
     }
 
-    private boolean isRightRelationType(RelationshipType relationshipType, RelationshipTypeEnum relationshipTypeEnum) {
-        return RelationshipTypeEnum.fromValue(relationshipType.getClass().toString()) == relationshipTypeEnum;
-    }
-
-    public List<String> getOtherElements(String identifier) {
-        List<String> otherElements = new LinkedList<>();
-
-        for (RelationshipType relationshipType : relationshipsType.getRelationship()) {
-            if (relationshipType.getSource().toString().equals(identifier)) {
-                otherElements.add(relationshipType.getTarget().toString());
-            } else if (relationshipType.getTarget().toString().equals(identifier)) {
-                otherElements.add(relationshipType.getSource().toString());
-            }
+    public String getNameOfElement(String identifier) {
+        for (ElementType element : elements) {
+            if (element.getIdentifier().equals(identifier))
+                return element.getNameGroup().get(0).getValue();
         }
 
-        return otherElements;
+        return "";
     }
 }

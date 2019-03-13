@@ -3,7 +3,7 @@ package se.kth.archiLang.malInterface.metaElements;
 import java.util.List;
 
 public interface Class extends MetaElement {
-    List<Class> getExtends();
+    List<String> getExtends();
 
     List<Attack> getAttacks();
 
