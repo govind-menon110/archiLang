@@ -5,7 +5,7 @@ import java.util.List;
 public interface Attack extends MetaElement {
     List<Attack> getFollowUpAttack();
 
-    Class getRelatedClass();
+    String getRelatedClass();
 
     RelationEnum getRelation();
 }

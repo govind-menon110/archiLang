@@ -1,5 +1,6 @@
 package se.kth.archiLang.archiMalAdapter;
 
+import se.kth.archiLang.generated.archimate3.Assessment;
 import se.kth.archiLang.generated.archimate3.ElementType;
 import se.kth.archiLang.generated.archimate3.ModelType;
 import se.kth.archiLang.generated.archimate3.RelationshipTypeEnum;
@@ -12,12 +13,14 @@ import java.util.List;
 
 public class MetaElements {
     private List<Class> classes = new LinkedList<>();
+    private ElementContainer elementContainer;
 
     public MetaElements(ModelType exchangeModel) {
+        elementContainer = new ElementContainer(exchangeModel.getRelationships().getRelationship(),
+                exchangeModel.getElements().getElement());
         PropertyDefContainer container = new PropertyDefContainer(exchangeModel.getPropertyDefinitions());
         PropertyExtractor extractor = new PropertyExtractor(container);
-        RelationContainer relationContainer = new RelationContainer(exchangeModel.getRelationships().getRelationship(),
-                exchangeModel.getElements().getElement());
+
 
         for (ElementType elementType : exchangeModel.getElements().getElement()) {
             if (extractor.get("Modelelementtype", elementType).equals("Meta")) {
@@ -26,7 +29,8 @@ public class MetaElements {
                 List<Defense> defense = new LinkedList<>();
                 String name = elementType.getNameGroup().get(0).getValue();
 
-                getExtends(relationContainer, elementType, extended);
+                getExtends(elementType, extended);
+                getAttacks(elementType, attacks);
 
                 ClassImpl classImpl = new ClassImpl(extended, attacks, defense, name);
 
@@ -35,11 +39,23 @@ public class MetaElements {
         }
     }
 
-    public void getExtends(RelationContainer relationContainer, ElementType elementType, List<String> extended) {
-        for (Relation relation : relationContainer.getRelation(
+    private void getAttacks(ElementType elementType, List<Attack> attacks) {
+        for (Relation relation : elementContainer.getRelation(
+                elementType.getIdentifier(),
+                RelationshipTypeEnum.ASSOCIATION,
+                true, false)) {
+            ElementType element = elementContainer.get(relation.getSink());
+            if (element != null && element.getClass().equals(Assessment.class)) {
+                attacks.add(new AttackImpl(relation.getSink(), elementContainer));
+            }
+        }
+    }
+
+    private void getExtends(ElementType elementType, List<String> extended) {
+        for (Relation relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.SPECIALIZATION,
-                true)) {
+                true, true)) {
             extended.add(relation.getSink());
         }
     }

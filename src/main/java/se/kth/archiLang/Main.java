@@ -19,7 +19,7 @@ public class Main {
             ModelType model = ((JAXBElement<ModelType>) unmarshaller.unmarshal(new File("Power Plant.xml"))).getValue();
 
             MetaElements metaElements = new MetaElements(model);
-            System.out.println("Check");
+
         } catch (JAXBException e) {
             e.printStackTrace();
         }
