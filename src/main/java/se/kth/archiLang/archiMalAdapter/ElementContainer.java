@@ -17,8 +17,8 @@ public class ElementContainer {
         this.elements = elements;
     }
 
-    public List<Relation> getRelation(String identifier, RelationshipTypeEnum typeEnum, Boolean source, Boolean getName) {
-        List<Relation> result = new LinkedList<>();
+    public List<RelationImpl> getRelation(String identifier, RelationshipTypeEnum typeEnum, Boolean source, Boolean getName) {
+        List<RelationImpl> result = new LinkedList<>();
 
         for (RelationshipType relation : relations) {
             if (typeEnum.value().equals(relation.getClass().getSimpleName())) {
@@ -26,11 +26,11 @@ public class ElementContainer {
                         (!source && ((ReferenceableType) relation.getTarget()).getIdentifier().equals(identifier))) {
                     result.add(
                             getName ?
-                                    new Relation(
+                                    new RelationImpl(
                                             getNameOfElement(((ReferenceableType) relation.getSource()).getIdentifier()),
                                             getNameOfElement(((ReferenceableType) relation.getTarget()).getIdentifier())
                                     ) :
-                                    new Relation(
+                                    new RelationImpl(
                                             ((ReferenceableType) relation.getSource()).getIdentifier(),
                                             ((ReferenceableType) relation.getTarget()).getIdentifier()
                                     )

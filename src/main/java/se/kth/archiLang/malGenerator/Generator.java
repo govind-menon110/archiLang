@@ -4,6 +4,7 @@ import se.kth.archiLang.archiMalAdapter.MetaElements;
 import se.kth.archiLang.malInterface.metaElements.Attack;
 import se.kth.archiLang.malInterface.metaElements.Class;
 import se.kth.archiLang.malInterface.metaElements.Defense;
+import se.kth.archiLang.malInterface.metaElements.Relation;
 
 public class Generator {
     public static String generateMeta(MetaElements elements, String category) {
@@ -38,6 +39,17 @@ public class Generator {
             }
 
             builder.append("}" + System.lineSeparator());
+        }
+
+        builder.append("}" + System.lineSeparator());
+
+        //add Relations
+        builder.append("associations {" + System.lineSeparator());
+
+        for (Relation relation : elements.getRelations()) {
+            builder.append(relation.getSource() + " [" + relation.getSourceLabel() + "] ");
+            builder.append(relation.getSourceCarindality() + " <-- " + relation.getName() + " --> " + relation.getSinkCardinality() + " ");
+            builder.append("[" + relation.getSinkLabel() + "] " + relation.getSink() + System.lineSeparator());
         }
 
         builder.append("}" + System.lineSeparator());

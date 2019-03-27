@@ -1848,9 +1848,6 @@
         <relationship identifier="id-afa2a821-9dd1-448b-8cd7-9c6daa58a946"
                       source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-d6418e7d-7093-4fdb-a724-921e39344b33"
                       xsi:type="Realization"/>
-        <relationship identifier="id-c3af31f1-fba5-4700-8311-74ab5350d7f0"
-                      source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-d6418e7d-7093-4fdb-a724-921e39344b33"
-                      xsi:type="Specialization"/>
         <relationship identifier="id-a75c1779-8a20-43ab-a50c-7192bf27830e"
                       source="id-690e8dad-0016-4c91-98f8-da3be2caf361" target="id-2735dd6b-2254-4609-a2af-d970e9d9c33e"
                       xsi:type="Specialization"/>
@@ -1890,9 +1887,6 @@
         <relationship identifier="id-e1c3c710-7875-4290-a5b0-95ebdc942903"
                       source="id-690e8dad-0016-4c91-98f8-da3be2caf361" target="id-27c18bb2-4cb0-4132-b4c1-ff71973d09f3"
                       xsi:type="Association"/>
-        <relationship identifier="id-075ef87e-6b3a-46a3-a0d0-ca5457e9c97d"
-                      source="id-2c6ef292-161c-450f-89d1-9a4558424e77" target="id-5ccffc89-0f0f-4754-b97f-4a0a9b6c59b4"
-                      xsi:type="Specialization"/>
         <relationship identifier="id-1c527230-afa2-4e86-b336-4befefb819a3"
                       source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-5ccffc89-0f0f-4754-b97f-4a0a9b6c59b4"
                       xsi:type="Specialization"/>
@@ -1932,6 +1926,12 @@
         <relationship identifier="id-85c56b9f-f5d7-4319-83fe-f100f92ca452"
                       source="id-d8ce6f39-9cde-44d0-ac6c-14ed893590ce" target="id-1fc3a614-0eba-4252-bab7-db67b3727c42"
                       xsi:type="Association"/>
+        <relationship identifier="id-7af3e6a5-0cb4-4122-8622-86c880052c87"
+                      source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-d6418e7d-7093-4fdb-a724-921e39344b33"
+                      xsi:type="Aggregation"/>
+        <relationship identifier="id-a8d21fd6-039a-47c8-8631-d9516aaafe15"
+                      source="id-5ccffc89-0f0f-4754-b97f-4a0a9b6c59b4" target="id-2c6ef292-161c-450f-89d1-9a4558424e77"
+                      xsi:type="Serving"/>
     </relationships>
     <organizations>
         <item>
@@ -2334,7 +2334,6 @@
             <item identifierRef="id-c91d9fd3-5382-4153-9d85-1347911f5a30"/>
             <item identifierRef="id-ae5d85b6-478a-4b66-9a47-b2498e7ad1d3"/>
             <item identifierRef="id-afa2a821-9dd1-448b-8cd7-9c6daa58a946"/>
-            <item identifierRef="id-c3af31f1-fba5-4700-8311-74ab5350d7f0"/>
             <item identifierRef="id-a75c1779-8a20-43ab-a50c-7192bf27830e"/>
             <item identifierRef="id-abed55ce-5db3-4b5c-9f6c-b86ecd913462"/>
             <item identifierRef="id-07278edd-4404-44ca-bbe2-2bdb018250d7"/>
@@ -2348,7 +2347,6 @@
             <item identifierRef="id-709cfb7c-9a85-4255-bd23-b21d29c4a777"/>
             <item identifierRef="id-14845d46-a92f-45f6-ab1d-99d743e4a9f6"/>
             <item identifierRef="id-e1c3c710-7875-4290-a5b0-95ebdc942903"/>
-            <item identifierRef="id-075ef87e-6b3a-46a3-a0d0-ca5457e9c97d"/>
             <item identifierRef="id-1c527230-afa2-4e86-b336-4befefb819a3"/>
             <item identifierRef="id-b8aabf53-b1c3-44a6-9ee7-60b8c4c09821"/>
             <item identifierRef="id-4e48ec5e-45cd-466d-a4bf-9fa3118321b3"/>
@@ -2362,6 +2360,8 @@
             <item identifierRef="id-2c099df3-a7e4-4c81-9fdf-70851c5ed035"/>
             <item identifierRef="id-15324207-6519-426c-8f1d-6a8ff2cd3f49"/>
             <item identifierRef="id-85c56b9f-f5d7-4319-83fe-f100f92ca452"/>
+            <item identifierRef="id-7af3e6a5-0cb4-4122-8622-86c880052c87"/>
+            <item identifierRef="id-a8d21fd6-039a-47c8-8631-d9516aaafe15"/>
         </item>
         <item>
             <label xml:lang="de">Views</label>
@@ -5773,10 +5773,10 @@
                         </font>
                     </style>
                 </connection>
-                <connection identifier="id-fffabfde-39e8-4d46-a3e0-9ec28c552f5e"
-                            relationshipRef="id-c3af31f1-fba5-4700-8311-74ab5350d7f0" xsi:type="Relationship"
+                <connection identifier="id-8e02e4dc-6e97-4708-a4c2-31eab6f6a625"
+                            relationshipRef="id-b8aabf53-b1c3-44a6-9ee7-60b8c4c09821" xsi:type="Relationship"
                             source="id-f50fcb42-5034-440c-84cb-43c81e6331a2"
-                            target="id-e9301709-1661-4b20-b286-5be42c962f1c">
+                            target="id-5d23c27d-f6d2-4bc2-a702-7895b56c61af">
                     <style>
                         <lineColor r="0" g="0" b="0"/>
                         <font name="Segoe UI" size="9">
@@ -5784,10 +5784,10 @@
                         </font>
                     </style>
                 </connection>
-                <connection identifier="id-8e02e4dc-6e97-4708-a4c2-31eab6f6a625"
-                            relationshipRef="id-b8aabf53-b1c3-44a6-9ee7-60b8c4c09821" xsi:type="Relationship"
+                <connection identifier="id-0169ef4b-b792-49b2-8275-7f30e7c8eb35"
+                            relationshipRef="id-7af3e6a5-0cb4-4122-8622-86c880052c87" xsi:type="Relationship"
                             source="id-f50fcb42-5034-440c-84cb-43c81e6331a2"
-                            target="id-5d23c27d-f6d2-4bc2-a702-7895b56c61af">
+                            target="id-e9301709-1661-4b20-b286-5be42c962f1c">
                     <style>
                         <lineColor r="0" g="0" b="0"/>
                         <font name="Segoe UI" size="9">
@@ -5872,17 +5872,6 @@
                         </font>
                     </style>
                 </connection>
-                <connection identifier="id-ff488e8d-3075-4e35-b9cf-a127f011a371"
-                            relationshipRef="id-075ef87e-6b3a-46a3-a0d0-ca5457e9c97d" xsi:type="Relationship"
-                            source="id-01ed41b7-0664-4146-a641-9222830aecb6"
-                            target="id-bc587a85-1683-40ed-95c1-fda11b00b28a">
-                    <style>
-                        <lineColor r="0" g="0" b="0"/>
-                        <font name="Segoe UI" size="9">
-                            <color r="0" g="0" b="0"/>
-                        </font>
-                    </style>
-                </connection>
                 <connection identifier="id-35b82fa0-0d07-4d47-a8d6-17d0f70f3403"
                             relationshipRef="id-d4d334a0-5022-4367-8d6b-bb4ebe92e04e" xsi:type="Relationship"
                             source="id-9fe1082e-1448-4b92-9b46-331ecc332ae5"
@@ -5920,6 +5909,17 @@
                             relationshipRef="id-659ed8cf-cc05-4715-873b-86d82243d784" xsi:type="Relationship"
                             source="id-bc587a85-1683-40ed-95c1-fda11b00b28a"
                             target="id-5d23c27d-f6d2-4bc2-a702-7895b56c61af">
+                    <style>
+                        <lineColor r="0" g="0" b="0"/>
+                        <font name="Segoe UI" size="9">
+                            <color r="0" g="0" b="0"/>
+                        </font>
+                    </style>
+                </connection>
+                <connection identifier="id-47046f1a-322b-46d8-8364-c1c6b7d548d4"
+                            relationshipRef="id-a8d21fd6-039a-47c8-8631-d9516aaafe15" xsi:type="Relationship"
+                            source="id-bc587a85-1683-40ed-95c1-fda11b00b28a"
+                            target="id-01ed41b7-0664-4146-a641-9222830aecb6">
                     <style>
                         <lineColor r="0" g="0" b="0"/>
                         <font name="Segoe UI" size="9">

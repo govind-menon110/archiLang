@@ -27,7 +27,7 @@ public class AttackImpl implements Attack {
 
     private void setAttacks(String identifier, ElementContainer elementContainer) {
         ElementType elementType = elementContainer.get(identifier);
-        for (Relation relation : elementContainer.getRelation(
+        for (RelationImpl relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.INFLUENCE,
                 true, false)) {
@@ -35,11 +35,11 @@ public class AttackImpl implements Attack {
         }
     }
 
-    private void addAttack(ElementContainer elementContainer, Relation relation) {
+    private void addAttack(ElementContainer elementContainer, RelationImpl relation) {
         if (elementContainer.get(relation.getSink()).getClass().equals(Assessment.class)) {
             attacks.add(relation.getSink());
         } else if (elementContainer.get(relation.getSink()).getClass().equals(AndJunction.class)) { //Follow Junctions
-            for (Relation relation2 : elementContainer.getRelation(
+            for (RelationImpl relation2 : elementContainer.getRelation(
                     relation.getSink(),
                     RelationshipTypeEnum.INFLUENCE,
                     true, false)) {
@@ -52,7 +52,7 @@ public class AttackImpl implements Attack {
 
     private void setRelatedClass(String identifier, ElementContainer elementContainer) {
         ElementType elementType = elementContainer.get(identifier);
-        for (Relation relation : elementContainer.getRelation(
+        for (RelationImpl relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.ASSOCIATION,
                 false, false)) {
@@ -60,7 +60,7 @@ public class AttackImpl implements Attack {
                 relatedClass = MetaElements.format(elementContainer.getNameOfElement(relation.getSource()));
             }
         }
-        for (Relation relation : elementContainer.getRelation(
+        for (RelationImpl relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.ASSOCIATION,
                 true, false)) {
@@ -73,7 +73,7 @@ public class AttackImpl implements Attack {
     private void setRelation(String identifier, ElementContainer elementContainer) {
         ElementType elementType = elementContainer.get(identifier);
         Boolean junction = false;
-        for (Relation relation : elementContainer.getRelation(
+        for (RelationImpl relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.INFLUENCE,
                 false, false)) {

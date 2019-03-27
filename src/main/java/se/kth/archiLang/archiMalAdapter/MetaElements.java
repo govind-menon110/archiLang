@@ -1,13 +1,11 @@
 package se.kth.archiLang.archiMalAdapter;
 
 import org.apache.commons.text.WordUtils;
-import se.kth.archiLang.generated.archimate3.Assessment;
-import se.kth.archiLang.generated.archimate3.ElementType;
-import se.kth.archiLang.generated.archimate3.ModelType;
-import se.kth.archiLang.generated.archimate3.RelationshipTypeEnum;
+import se.kth.archiLang.generated.archimate3.*;
 import se.kth.archiLang.malInterface.metaElements.Attack;
 import se.kth.archiLang.malInterface.metaElements.Class;
 import se.kth.archiLang.malInterface.metaElements.Defense;
+import se.kth.archiLang.malInterface.metaElements.Relation;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +13,7 @@ import java.util.List;
 public class MetaElements {
     private List<Class> classes = new LinkedList<>();
     private ElementContainer elementContainer;
+    private List<Relation> relations = new LinkedList<>();
 
     public MetaElements(ModelType exchangeModel) {
         elementContainer = new ElementContainer(exchangeModel.getRelationships().getRelationship(),
@@ -22,7 +21,47 @@ public class MetaElements {
         PropertyDefContainer container = new PropertyDefContainer(exchangeModel.getPropertyDefinitions());
         PropertyExtractor extractor = new PropertyExtractor(container);
 
+        getClasses(exchangeModel, extractor);
 
+        getRelations(exchangeModel, extractor);
+    }
+
+    private void getRelations(ModelType exchangeModel, PropertyExtractor extractor) {
+        for (RelationshipType relationshipType : exchangeModel.getRelationships().getRelationship()) {
+            String sourceIdentifier = ((ReferenceableType) relationshipType.getSource()).getIdentifier();
+            String source = format(elementContainer.getNameOfElement(sourceIdentifier));
+            ElementType sourceElement = elementContainer.get(sourceIdentifier);
+            String sinkIdentifier = ((ReferenceableType) relationshipType.getTarget()).getIdentifier();
+            String sink = format(elementContainer.getNameOfElement(sinkIdentifier));
+            ElementType sinkElement = elementContainer.get(sinkIdentifier);
+            String sourceCardinality = "*";
+            String sinkCardinality = "*";
+            Boolean set = false;
+
+            if (extractor.get("Modelelementtype", sourceElement).equals("Meta") &&
+                    extractor.get("Modelelementtype", sinkElement).equals("Meta")) {
+                if (relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.AGGREGATION.value()) ||
+                        relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.COMPOSITION.value())) {
+                    set = true;
+
+                    sourceCardinality = "1";
+                } else if (relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.TRIGGERING.value()) ||
+                        relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.SERVING.value())) {
+                    set = true;
+                } else if (relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.ASSOCIATION.value())) {
+                    if (!sourceElement.getClass().getSimpleName().equals(ElementTypeEnum.ASSESSMENT.value()) &&
+                            !sinkElement.getClass().getSimpleName().equals(ElementTypeEnum.ASSESSMENT.value())) {
+                        set = true;
+                    }
+                }
+                if (set) {
+                    relations.add(new RelationImpl(sink, source, sinkCardinality, sourceCardinality));
+                }
+            }
+        }
+    }
+
+    private void getClasses(ModelType exchangeModel, PropertyExtractor extractor) {
         for (ElementType elementType : exchangeModel.getElements().getElement()) {
             if (extractor.get("Modelelementtype", elementType).equals("Meta")) {
                 List<String> extended = new LinkedList<>();
@@ -41,13 +80,13 @@ public class MetaElements {
     }
 
     private void getAttacks(ElementType elementType, List<Attack> attacks) {
-        for (Relation relation : elementContainer.getRelation(
+        for (RelationImpl relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.ASSOCIATION,
                 true, false)) {
             addAttack(attacks, relation);
         }
-        for (Relation relation : elementContainer.getRelation(
+        for (RelationImpl relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.ASSOCIATION,
                 false, false)) {
@@ -55,7 +94,7 @@ public class MetaElements {
         }
     }
 
-    private void addAttack(List<Attack> attacks, Relation relation) {
+    private void addAttack(List<Attack> attacks, RelationImpl relation) {
         ElementType element = elementContainer.get(relation.getSink());
         if (element != null && element.getClass().equals(Assessment.class)) {
             attacks.add(new AttackImpl(relation.getSink(), elementContainer));
@@ -72,8 +111,12 @@ public class MetaElements {
         return classes;
     }
 
+    public List<Relation> getRelations() {
+        return relations;
+    }
+
     private void getExtends(ElementType elementType, List<String> extended) {
-        for (Relation relation : elementContainer.getRelation(
+        for (RelationImpl relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.SPECIALIZATION,
                 true, true)) {
