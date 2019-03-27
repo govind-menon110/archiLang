@@ -18,7 +18,7 @@ public class AttackImpl implements Attack {
     private ElementContainer elementContainer;
 
     public AttackImpl(String identifier, ElementContainer elementContainer) {
-        name = elementContainer.get(identifier).getNameGroup().get(0).getValue();
+        name = MetaElements.format(elementContainer.get(identifier).getNameGroup().get(0).getValue());
         this.elementContainer = elementContainer;
         setAttacks(identifier, elementContainer);
         setRelatedClass(identifier, elementContainer);
@@ -53,7 +53,7 @@ public class AttackImpl implements Attack {
                 RelationshipTypeEnum.ASSOCIATION,
                 false, false)) {
             if (!elementContainer.get(relation.getSource()).getClass().equals(Assessment.class)) {
-                relatedClass = elementContainer.getNameOfElement(relation.getSource());
+                relatedClass = MetaElements.format(elementContainer.getNameOfElement(relation.getSource()));
             }
         }
     }

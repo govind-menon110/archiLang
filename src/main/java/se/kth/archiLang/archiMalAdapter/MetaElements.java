@@ -1,5 +1,6 @@
 package se.kth.archiLang.archiMalAdapter;
 
+import org.apache.commons.text.WordUtils;
 import se.kth.archiLang.generated.archimate3.Assessment;
 import se.kth.archiLang.generated.archimate3.ElementType;
 import se.kth.archiLang.generated.archimate3.ModelType;
@@ -27,7 +28,7 @@ public class MetaElements {
                 List<String> extended = new LinkedList<>();
                 List<Attack> attacks = new LinkedList<>();
                 List<Defense> defense = new LinkedList<>();
-                String name = elementType.getNameGroup().get(0).getValue();
+                String name = format(elementType.getNameGroup().get(0).getValue());
 
                 getExtends(elementType, extended);
                 getAttacks(elementType, attacks);
@@ -51,16 +52,22 @@ public class MetaElements {
         }
     }
 
+    public static String format(String name) {
+        String capitalized = WordUtils.capitalize(name);
+        String justLetters = capitalized.replaceAll("\\W", "");
+        return justLetters;
+    }
+
+    public List<Class> getClasses() {
+        return classes;
+    }
+
     private void getExtends(ElementType elementType, List<String> extended) {
         for (Relation relation : elementContainer.getRelation(
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.SPECIALIZATION,
                 true, true)) {
-            extended.add(relation.getSink());
+            extended.add(format(relation.getSink()));
         }
-    }
-
-    public List<Class> getClasses() {
-        return classes;
     }
 }
