@@ -31,16 +31,20 @@ public class AttackImpl implements Attack {
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.INFLUENCE,
                 true, false)) {
-            if (elementContainer.get(relation.getSink()).getClass().equals(Assessment.class)) {
-                attacks.add(relation.getSink());
-            } else if (elementContainer.get(relation.getSink()).getClass().equals(AndJunction.class)) { //Follow Junctions
-                for (Relation relation2 : elementContainer.getRelation(
-                        relation.getSink(),
-                        RelationshipTypeEnum.INFLUENCE,
-                        true, false)) {
-                    if (elementContainer.get(relation2.getSink()).getClass().equals(Assessment.class)) {
-                        attacks.add(relation2.getSink());
-                    }
+            addAttack(elementContainer, relation);
+        }
+    }
+
+    private void addAttack(ElementContainer elementContainer, Relation relation) {
+        if (elementContainer.get(relation.getSink()).getClass().equals(Assessment.class)) {
+            attacks.add(relation.getSink());
+        } else if (elementContainer.get(relation.getSink()).getClass().equals(AndJunction.class)) { //Follow Junctions
+            for (Relation relation2 : elementContainer.getRelation(
+                    relation.getSink(),
+                    RelationshipTypeEnum.INFLUENCE,
+                    true, false)) {
+                if (elementContainer.get(relation2.getSink()).getClass().equals(Assessment.class)) {
+                    attacks.add(relation2.getSink());
                 }
             }
         }
@@ -54,6 +58,14 @@ public class AttackImpl implements Attack {
                 false, false)) {
             if (!elementContainer.get(relation.getSource()).getClass().equals(Assessment.class)) {
                 relatedClass = MetaElements.format(elementContainer.getNameOfElement(relation.getSource()));
+            }
+        }
+        for (Relation relation : elementContainer.getRelation(
+                elementType.getIdentifier(),
+                RelationshipTypeEnum.ASSOCIATION,
+                true, false)) {
+            if (!elementContainer.get(relation.getSink()).getClass().equals(Assessment.class)) {
+                relatedClass = MetaElements.format(elementContainer.getNameOfElement(relation.getSink()));
             }
         }
     }

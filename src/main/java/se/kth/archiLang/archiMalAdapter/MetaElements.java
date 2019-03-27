@@ -45,10 +45,20 @@ public class MetaElements {
                 elementType.getIdentifier(),
                 RelationshipTypeEnum.ASSOCIATION,
                 true, false)) {
-            ElementType element = elementContainer.get(relation.getSink());
-            if (element != null && element.getClass().equals(Assessment.class)) {
-                attacks.add(new AttackImpl(relation.getSink(), elementContainer));
-            }
+            addAttack(attacks, relation);
+        }
+        for (Relation relation : elementContainer.getRelation(
+                elementType.getIdentifier(),
+                RelationshipTypeEnum.ASSOCIATION,
+                false, false)) {
+            addAttack(attacks, relation);
+        }
+    }
+
+    private void addAttack(List<Attack> attacks, Relation relation) {
+        ElementType element = elementContainer.get(relation.getSink());
+        if (element != null && element.getClass().equals(Assessment.class)) {
+            attacks.add(new AttackImpl(relation.getSink(), elementContainer));
         }
     }
 
