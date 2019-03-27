@@ -27,10 +27,20 @@ public class Generator {
 
             for (Attack attack : malClass.getAttacks()) {
                 builder.append(attack.getRelation().toString() + " ");
-                builder.append(attack.getName() + System.lineSeparator());
 
+                // Decapitalize the first letter of the attack step's name
+                String attackStepName = attack.getName().substring(0, 1).toLowerCase() + attack.getName().substring(1);
+                builder.append(attackStepName + System.lineSeparator());
+
+                int followUpAttackSteps = 0;
                 for (Attack followAttack : attack.getFollowUpAttack()) {
-                    builder.append("-> " + followAttack.getRelatedClass() + "." + followAttack.getName() + System.lineSeparator());
+                    // Decapitalize the first letter of the follow up attack step's name
+                    String followUpAttackStepName = followAttack.getName().substring(0, 1).toLowerCase() + followAttack.getName().substring(1);
+                    if (followUpAttackSteps == 0)
+                        builder.append("-> " + followAttack.getRelatedClass() + "." + followUpAttackStepName + System.lineSeparator());
+                    else
+                        builder.append(", " + followAttack.getRelatedClass() + "." + followUpAttackStepName + System.lineSeparator());
+                    followUpAttackSteps++;
                 }
             }
 
