@@ -8,4 +8,6 @@ public interface Attack extends MetaElement {
     String getRelatedClass();
 
     RelationEnum getRelation();
+
+    String getRelatedRelation();
 }

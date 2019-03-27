@@ -21,9 +21,9 @@ public class MetaElements {
         PropertyDefContainer container = new PropertyDefContainer(exchangeModel.getPropertyDefinitions());
         PropertyExtractor extractor = new PropertyExtractor(container);
 
-        getClasses(exchangeModel, extractor);
-
         getRelations(exchangeModel, extractor);
+
+        getClasses(exchangeModel, extractor);
     }
 
     private void getRelations(ModelType exchangeModel, PropertyExtractor extractor) {
@@ -97,7 +97,7 @@ public class MetaElements {
     private void addAttack(List<Attack> attacks, RelationImpl relation) {
         ElementType element = elementContainer.get(relation.getSink());
         if (element != null && element.getClass().equals(Assessment.class)) {
-            attacks.add(new AttackImpl(relation.getSink(), elementContainer));
+            attacks.add(new AttackImpl(relation.getSink(), elementContainer, relations));
         }
     }
 

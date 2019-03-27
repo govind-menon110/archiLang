@@ -17,6 +17,18 @@ public class ElementContainer {
         this.elements = elements;
     }
 
+    public boolean relationExists(String sourceIdentifier, String sinkIdentifier) {
+        for (RelationshipType relation : relations) {
+            String relationSource = ((ReferenceableType) relation.getSource()).getIdentifier();
+            String relationSink = ((ReferenceableType) relation.getTarget()).getIdentifier();
+            if (relationSink.equals(sinkIdentifier) && relationSource.equals(sourceIdentifier)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public List<RelationImpl> getRelation(String identifier, RelationshipTypeEnum typeEnum, Boolean source, Boolean getName) {
         List<RelationImpl> result = new LinkedList<>();
 
