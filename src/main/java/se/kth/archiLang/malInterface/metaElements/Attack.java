@@ -9,5 +9,5 @@ public interface Attack extends MetaElement {
 
     RelationEnum getRelation();
 
-    String getRelatedRelation();
+    String getRelatedLabel();
 }

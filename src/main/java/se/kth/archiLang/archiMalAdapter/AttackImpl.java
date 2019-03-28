@@ -87,18 +87,15 @@ public class AttackImpl implements Attack {
             String sourceName = MetaElements.format(elementContainer.getNameOfElement(source));
             String sinkName = MetaElements.format(elementContainer.getNameOfElement(sink));
 
-            String targetRelatedRelation = "";
+            Relation rel = new RelationImpl(sinkName, sourceName, "*", "*");
 
-            if (elementContainer.relationExists(source, sink)) {
-                targetRelatedRelation = sourceName + sinkName;
-            } else if (elementContainer.relationExists(sink, source)) {
-                targetRelatedRelation = sinkName + sourceName;
-            } else {
-                targetRelatedRelation = sourceName + sinkName;
-                relations.add(new RelationImpl(sinkName, sourceName, "*", "*"));
+            String targetRelatedLabel = rel.getSinkLabel();
+
+            if (!(elementContainer.relationExists(source, sink) && elementContainer.relationExists(sink, source))) {
+                relations.add(rel);
             }
 
-            attack.setRelatedRelation(targetRelatedRelation);
+            attack.setRelatedRelation(targetRelatedLabel);
 
             attacks.add(attack);
         }
@@ -122,7 +119,7 @@ public class AttackImpl implements Attack {
     }
 
     @Override
-    public String getRelatedRelation() {
+    public String getRelatedLabel() {
         return relatedRelation;
     }
 

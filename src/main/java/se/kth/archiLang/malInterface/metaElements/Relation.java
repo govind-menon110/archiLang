@@ -1,11 +1,9 @@
 package se.kth.archiLang.malInterface.metaElements;
 
-public interface Relation {
+public interface Relation extends MetaElement {
     String getSinkCardinality();
 
     String getSourceCarindality();
-
-    String getName();
 
     String getSink();
 

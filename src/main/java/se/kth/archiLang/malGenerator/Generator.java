@@ -37,9 +37,9 @@ public class Generator {
                     // Decapitalize the first letter of the follow up attack step's name
                     String followUpAttackStepName = followAttack.getName().substring(0, 1).toLowerCase() + followAttack.getName().substring(1);
                     if (followUpAttackSteps == 0)
-                        builder.append("-> " + followAttack.getRelatedRelation() + "." + followUpAttackStepName + System.lineSeparator());
+                        builder.append("-> " + followAttack.getRelatedLabel() + "." + followUpAttackStepName + System.lineSeparator());
                     else
-                        builder.append(", " + followAttack.getRelatedRelation() + "." + followUpAttackStepName + System.lineSeparator());
+                        builder.append(", " + followAttack.getRelatedLabel() + "." + followUpAttackStepName + System.lineSeparator());
                     followUpAttackSteps++;
                 }
             }
