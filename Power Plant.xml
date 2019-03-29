@@ -1119,9 +1119,6 @@
         <relationship identifier="id-8cf8e187-f6c7-4d7a-a6fb-45a7ba34ecb6"
                       source="id-968d9bbb-5fda-4d56-983e-d4c2a7fff2a4" target="id-bd2656dc-94a0-441a-bc75-168fb481e169"
                       xsi:type="Specialization"/>
-        <relationship identifier="id-218a4d72-bcc4-417b-8eab-a08937bd41bb"
-                      source="id-690e8dad-0016-4c91-98f8-da3be2caf361" target="id-968d9bbb-5fda-4d56-983e-d4c2a7fff2a4"
-                      xsi:type="Specialization"/>
         <relationship identifier="id-d4d46fdb-0f56-4111-bb9f-27c225dd8bfb"
                       source="id-a5e41718-0d8f-4b38-bb95-dccb1cce2640" target="id-286079bf-8ff6-4926-b221-1c2955ac4cc6"
                       xsi:type="Composition"/>
@@ -1134,9 +1131,6 @@
         <relationship identifier="id-4ad404b1-385e-4dd7-a9db-5cf0018a2d9d"
                       source="id-a5e41718-0d8f-4b38-bb95-dccb1cce2640" target="id-2735dd6b-2254-4609-a2af-d970e9d9c33e"
                       xsi:type="Composition"/>
-        <relationship identifier="id-07edb880-cc8e-4f96-a9bd-0093bf74d0e3"
-                      source="id-1d6d91c3-b904-4f42-ad73-d422c36a5efd" target="id-86daadaa-ab49-4bfd-b059-94962884e2ef"
-                      xsi:type="Specialization"/>
         <relationship identifier="id-54f4a313-ad52-4ff0-9956-2b66441a8ff2"
                       source="id-6635c290-fd07-44ee-b408-a2fa9f32ada3" target="id-c264a984-c3c3-4592-a32b-0890fb041af1"
                       xsi:type="Specialization"/>
@@ -1848,9 +1842,6 @@
         <relationship identifier="id-afa2a821-9dd1-448b-8cd7-9c6daa58a946"
                       source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-d6418e7d-7093-4fdb-a724-921e39344b33"
                       xsi:type="Realization"/>
-        <relationship identifier="id-a75c1779-8a20-43ab-a50c-7192bf27830e"
-                      source="id-690e8dad-0016-4c91-98f8-da3be2caf361" target="id-2735dd6b-2254-4609-a2af-d970e9d9c33e"
-                      xsi:type="Specialization"/>
         <relationship identifier="id-abed55ce-5db3-4b5c-9f6c-b86ecd913462"
                       source="id-690e8dad-0016-4c91-98f8-da3be2caf361" target="id-86daadaa-ab49-4bfd-b059-94962884e2ef"
                       xsi:type="Specialization"/>
@@ -1887,9 +1878,6 @@
         <relationship identifier="id-e1c3c710-7875-4290-a5b0-95ebdc942903"
                       source="id-690e8dad-0016-4c91-98f8-da3be2caf361" target="id-27c18bb2-4cb0-4132-b4c1-ff71973d09f3"
                       xsi:type="Association"/>
-        <relationship identifier="id-1c527230-afa2-4e86-b336-4befefb819a3"
-                      source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-5ccffc89-0f0f-4754-b97f-4a0a9b6c59b4"
-                      xsi:type="Specialization"/>
         <relationship identifier="id-b8aabf53-b1c3-44a6-9ee7-60b8c4c09821"
                       source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-06558502-4605-4479-8b9a-417d05cfc78a"
                       xsi:type="Specialization"/>
@@ -1932,6 +1920,9 @@
         <relationship identifier="id-a8d21fd6-039a-47c8-8631-d9516aaafe15"
                       source="id-5ccffc89-0f0f-4754-b97f-4a0a9b6c59b4" target="id-2c6ef292-161c-450f-89d1-9a4558424e77"
                       xsi:type="Serving"/>
+        <relationship identifier="id-8c09f902-022f-4109-a6b5-ff563f5ab889"
+                      source="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" target="id-5ccffc89-0f0f-4754-b97f-4a0a9b6c59b4"
+                      xsi:type="Aggregation"/>
     </relationships>
     <organizations>
         <item>
@@ -2091,12 +2082,10 @@
             <item identifierRef="id-142b5893-1dae-49cc-beec-a34890800068"/>
             <item identifierRef="id-e63b5d40-f13a-471d-bc06-65587a9c1652"/>
             <item identifierRef="id-8cf8e187-f6c7-4d7a-a6fb-45a7ba34ecb6"/>
-            <item identifierRef="id-218a4d72-bcc4-417b-8eab-a08937bd41bb"/>
             <item identifierRef="id-d4d46fdb-0f56-4111-bb9f-27c225dd8bfb"/>
             <item identifierRef="id-75b48807-5802-42f8-8a75-77bf35be79bd"/>
             <item identifierRef="id-8696ea20-7c3d-46fb-9dff-fa0cd45301b8"/>
             <item identifierRef="id-4ad404b1-385e-4dd7-a9db-5cf0018a2d9d"/>
-            <item identifierRef="id-07edb880-cc8e-4f96-a9bd-0093bf74d0e3"/>
             <item identifierRef="id-54f4a313-ad52-4ff0-9956-2b66441a8ff2"/>
             <item identifierRef="id-10ae45da-57c4-4035-998b-d988000b56c4"/>
             <item identifierRef="id-4cc7bcab-8235-46d2-a2a7-588392ffdd61"/>
@@ -2334,7 +2323,6 @@
             <item identifierRef="id-c91d9fd3-5382-4153-9d85-1347911f5a30"/>
             <item identifierRef="id-ae5d85b6-478a-4b66-9a47-b2498e7ad1d3"/>
             <item identifierRef="id-afa2a821-9dd1-448b-8cd7-9c6daa58a946"/>
-            <item identifierRef="id-a75c1779-8a20-43ab-a50c-7192bf27830e"/>
             <item identifierRef="id-abed55ce-5db3-4b5c-9f6c-b86ecd913462"/>
             <item identifierRef="id-07278edd-4404-44ca-bbe2-2bdb018250d7"/>
             <item identifierRef="id-3cd47578-2458-463f-a056-de07049c4737"/>
@@ -2347,7 +2335,6 @@
             <item identifierRef="id-709cfb7c-9a85-4255-bd23-b21d29c4a777"/>
             <item identifierRef="id-14845d46-a92f-45f6-ab1d-99d743e4a9f6"/>
             <item identifierRef="id-e1c3c710-7875-4290-a5b0-95ebdc942903"/>
-            <item identifierRef="id-1c527230-afa2-4e86-b336-4befefb819a3"/>
             <item identifierRef="id-b8aabf53-b1c3-44a6-9ee7-60b8c4c09821"/>
             <item identifierRef="id-4e48ec5e-45cd-466d-a4bf-9fa3118321b3"/>
             <item identifierRef="id-132c4e2a-796f-46ab-a203-93213597255b"/>
@@ -2362,6 +2349,7 @@
             <item identifierRef="id-85c56b9f-f5d7-4319-83fe-f100f92ca452"/>
             <item identifierRef="id-7af3e6a5-0cb4-4122-8622-86c880052c87"/>
             <item identifierRef="id-a8d21fd6-039a-47c8-8631-d9516aaafe15"/>
+            <item identifierRef="id-8c09f902-022f-4109-a6b5-ff563f5ab889"/>
         </item>
         <item>
             <label xml:lang="de">Views</label>
@@ -5378,7 +5366,7 @@
                     </style>
                 </node>
                 <node identifier="id-79744996-13fc-4a21-b72b-6e35e6db9a6a"
-                      elementRef="id-690e8dad-0016-4c91-98f8-da3be2caf361" xsi:type="Element" x="1404" y="546" w="140"
+                      elementRef="id-690e8dad-0016-4c91-98f8-da3be2caf361" xsi:type="Element" x="1476" y="564" w="140"
                       h="73">
                     <style>
                         <fillColor r="201" g="231" b="183"/>
@@ -5389,7 +5377,7 @@
                     </style>
                 </node>
                 <node identifier="id-f50fcb42-5034-440c-84cb-43c81e6331a2"
-                      elementRef="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" xsi:type="Element" x="456" y="580" w="120"
+                      elementRef="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" xsi:type="Element" x="419" y="648" w="120"
                       h="55">
                     <style>
                         <fillColor r="201" g="231" b="183"/>
@@ -5788,6 +5776,17 @@
                             relationshipRef="id-7af3e6a5-0cb4-4122-8622-86c880052c87" xsi:type="Relationship"
                             source="id-f50fcb42-5034-440c-84cb-43c81e6331a2"
                             target="id-e9301709-1661-4b20-b286-5be42c962f1c">
+                    <style>
+                        <lineColor r="0" g="0" b="0"/>
+                        <font name="Segoe UI" size="9">
+                            <color r="0" g="0" b="0"/>
+                        </font>
+                    </style>
+                </connection>
+                <connection identifier="id-c128bb8a-09a9-4b8e-af9d-046148c72f6c"
+                            relationshipRef="id-8c09f902-022f-4109-a6b5-ff563f5ab889" xsi:type="Relationship"
+                            source="id-f50fcb42-5034-440c-84cb-43c81e6331a2"
+                            target="id-bc587a85-1683-40ed-95c1-fda11b00b28a">
                     <style>
                         <lineColor r="0" g="0" b="0"/>
                         <font name="Segoe UI" size="9">
