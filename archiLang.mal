@@ -155,9 +155,10 @@ category Application {
 
 	abstractAsset ApplicationEntity
 		info: "Used for the association between assets in the Application Layer"
-	(
+	{
 
-	)
+
+	}
 
 	asset AppComponent
 	{
@@ -209,9 +210,10 @@ category Technology {
 
 	abstractAsset TechnologyEntity
 		info: "Used for the association between assets in the Technology Layer"
-	(
+	{
 
-	)
+
+	}
 
 	asset Node
 	{
