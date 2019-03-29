@@ -10,6 +10,8 @@ public class Generator {
     public static String generateMeta(MetaElements elements, String category) {
         StringBuilder builder = new StringBuilder();
 
+        builder.append("include archiLang.mal" + System.lineSeparator() + System.lineSeparator());
+
         builder.append("category " + category + " {" + System.lineSeparator());
 
         for (Class malClass : elements.getClasses()) {
