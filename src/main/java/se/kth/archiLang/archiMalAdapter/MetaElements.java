@@ -123,7 +123,7 @@ public class MetaElements {
             extended.add(format(relation.getSink()));
         }
         if (extended.isEmpty()) {
-            extended.add("ArchiMate." + elementType.getClass().getSimpleName());
+            extended.add(elementType.getClass().getSimpleName());
         }
     }
 }
