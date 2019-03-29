@@ -20,13 +20,13 @@ public class Main {
             JAXBContext context = JAXBContext.newInstance(ModelType.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
-            ModelType model = ((JAXBElement<ModelType>) unmarshaller.unmarshal(new File("Power Grid.xml"))).getValue();
+            ModelType model = ((JAXBElement<ModelType>) unmarshaller.unmarshal(new File("Power Plant.xml"))).getValue();
 
             MetaElements metaElements = new MetaElements(model);
 
             String malMeta = Generator.generateMeta(metaElements, "MainCategory");
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("powerGridLang_generated.mal"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("powerPlantLang_generated.mal"));
             writer.write(malMeta);
             writer.close();
 
