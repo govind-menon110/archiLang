@@ -30,14 +30,12 @@ public class Generator {
             for (Attack attack : malClass.getAttacks()) {
                 builder.append(attack.getRelation().toString() + " ");
 
-                // Decapitalize the first letter of the attack step's name
                 String attackStepName = attack.getName();
                 builder.append(attackStepName + System.lineSeparator());
 
                 int followUpAttackSteps = 0;
                 for (Attack followAttack : attack.getFollowUpAttack()) {
                     Boolean sameClass = !followAttack.getRelatedClass().equals(attack.getRelatedClass());
-                    // Decapitalize the first letter of the follow up attack step's name
                     String followUpAttackStepName = followAttack.getQualifiedName(sameClass);
                     if (followUpAttackSteps == 0)
                         builder.append("-> " + followUpAttackStepName + System.lineSeparator());
