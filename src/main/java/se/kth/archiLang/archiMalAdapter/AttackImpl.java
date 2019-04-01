@@ -91,7 +91,7 @@ public class AttackImpl implements Attack {
 
             String targetRelatedLabel = rel.getSinkLabel();
 
-            if (!(elementContainer.relationExists(source, sink) && elementContainer.relationExists(sink, source))) {
+            if (!(elementContainer.relationExists(source, sink) || elementContainer.relationExists(sink, source))) {
                 relations.add(rel);
             }
 
