@@ -46,7 +46,8 @@ public class MetaElements {
 
                     sourceCardinality = "1";
                 } else if (relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.TRIGGERING.value()) ||
-                        relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.SERVING.value())) {
+                        relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.SERVING.value()) ||
+                        relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.FLOW.value())) {
                     set = true;
                 } else if (relationshipType.getClass().getSimpleName().equals(RelationshipTypeEnum.ASSOCIATION.value())) {
                     if (!sourceElement.getClass().getSimpleName().equals(ElementTypeEnum.ASSESSMENT.value()) &&
