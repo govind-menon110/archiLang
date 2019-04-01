@@ -84,6 +84,10 @@ public class AttackImpl implements Attack {
             String source = this.relatedClass;
             String sink = attack.getRelatedClass();
 
+            if (attack.getName().equals("StopElectricityProduction")) {
+                System.out.println();
+            }
+
             String sourceName = MetaElements.format(elementContainer.getNameOfElement(source));
             String sinkName = MetaElements.format(elementContainer.getNameOfElement(sink));
 
@@ -91,7 +95,7 @@ public class AttackImpl implements Attack {
 
             String targetRelatedLabel = rel.getSinkLabel();
 
-            if (!(elementContainer.relationExists(source, sink) || elementContainer.relationExists(sink, source))) {
+            if (!elementContainer.relationExists(source, sink)) {
                 relations.add(rel);
             }
 
