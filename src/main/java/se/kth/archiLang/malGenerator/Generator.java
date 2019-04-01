@@ -31,17 +31,18 @@ public class Generator {
                 builder.append(attack.getRelation().toString() + " ");
 
                 // Decapitalize the first letter of the attack step's name
-                String attackStepName = attack.getName().substring(0, 1).toLowerCase() + attack.getName().substring(1);
+                String attackStepName = attack.getName();
                 builder.append(attackStepName + System.lineSeparator());
 
                 int followUpAttackSteps = 0;
                 for (Attack followAttack : attack.getFollowUpAttack()) {
+                    Boolean sameClass = !followAttack.getRelatedClass().equals(attack.getRelatedClass());
                     // Decapitalize the first letter of the follow up attack step's name
-                    String followUpAttackStepName = followAttack.getName().substring(0, 1).toLowerCase() + followAttack.getName().substring(1);
+                    String followUpAttackStepName = followAttack.getQualifiedName(sameClass);
                     if (followUpAttackSteps == 0)
-                        builder.append("-> " + followAttack.getRelatedLabel() + "." + followUpAttackStepName + System.lineSeparator());
+                        builder.append("-> " + followUpAttackStepName + System.lineSeparator());
                     else
-                        builder.append(", " + followAttack.getRelatedLabel() + "." + followUpAttackStepName + System.lineSeparator());
+                        builder.append(", " + followUpAttackStepName + System.lineSeparator());
                     followUpAttackSteps++;
                 }
             }

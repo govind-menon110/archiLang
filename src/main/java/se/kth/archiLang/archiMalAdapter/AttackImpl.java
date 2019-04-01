@@ -1,5 +1,6 @@
 package se.kth.archiLang.archiMalAdapter;
 
+import org.apache.commons.text.WordUtils;
 import se.kth.archiLang.generated.archimate3.AndJunction;
 import se.kth.archiLang.generated.archimate3.Assessment;
 import se.kth.archiLang.generated.archimate3.ElementType;
@@ -139,10 +140,23 @@ public class AttackImpl implements Attack {
 
     @Override
     public String getName() {
-        return name;
+        return WordUtils.uncapitalize(name);
     }
 
     public void setRelatedRelation(String relatedRelation) {
         this.relatedRelation = relatedRelation;
+    }
+
+    @Override
+    public String getQualifiedName(Boolean extension) {
+        StringBuilder qualifiedName = new StringBuilder();
+
+        if (extension) {
+            qualifiedName.append(elementContainer.getNameOfElement(getRelatedClass()) + ".");
+        }
+
+        qualifiedName.append(getName());
+
+        return qualifiedName.toString();
     }
 }

@@ -10,4 +10,6 @@ public interface Attack extends MetaElement {
     RelationEnum getRelation();
 
     String getRelatedLabel();
+
+    String getQualifiedName(Boolean extension);
 }
