@@ -697,6 +697,14 @@
                 </property>
             </properties>
         </element>
+        <element identifier="id-8f61b419-e643-419e-b486-461f99c73ced" xsi:type="Assessment">
+            <name xml:lang="de">Open Switch</name>
+            <properties>
+                <property propertyDefinitionRef="propid-4">
+                    <value xml:lang="de">Threat</value>
+                </property>
+            </properties>
+        </element>
         <element identifier="id-f75f4b45-c0f5-4a5e-915e-ffb5ccd4c958" xsi:type="Assessment">
             <name xml:lang="de">Shut down blowers</name>
             <properties>
@@ -1577,7 +1585,7 @@
                       source="id-27c18bb2-4cb0-4132-b4c1-ff71973d09f3" target="id-c7f2dc03-f6a7-452c-934f-f1b0080e76cd"
                       xsi:type="Influence"/>
         <relationship identifier="id-1d811f01-aeed-48bf-b5fe-0eb05e1c2b88"
-                      source="id-27c18bb2-4cb0-4132-b4c1-ff71973d09f3" target="id-2735dd6b-2254-4609-a2af-d970e9d9c33e"
+                      source="id-8f61b419-e643-419e-b486-461f99c73ced" target="id-2735dd6b-2254-4609-a2af-d970e9d9c33e"
                       xsi:type="Association"/>
         <relationship identifier="id-b2809b35-48c1-4b44-8771-f0e3f569d065"
                       source="id-84ad5f62-8960-4978-992c-61178f6fea77" target="id-5d963287-54e5-429a-ac41-bf15e1749cc5"
@@ -1939,6 +1947,9 @@
         <relationship identifier="id-27544949-e3fd-4e58-82e6-38afeccf0128"
                       source="id-195bcdf8-edd7-4d3f-b15b-1bce67edf8d6" target="id-e5939f09-dfac-4506-b3f2-33bc71c7f990"
                       xsi:type="Influence"/>
+        <relationship identifier="id-451266e2-d6f7-441f-b2aa-b162c8f619db"
+                      source="id-8f61b419-e643-419e-b486-461f99c73ced" target="id-27c18bb2-4cb0-4132-b4c1-ff71973d09f3"
+                      xsi:type="Influence"/>
     </relationships>
     <organizations>
         <item>
@@ -2090,6 +2101,7 @@
             <item identifierRef="id-9f248e43-0323-48f2-9ede-efb4362128b2"/>
             <item identifierRef="id-905b649f-28da-4431-91a6-013f9527cd4f"/>
             <item identifierRef="id-e5939f09-dfac-4506-b3f2-33bc71c7f990"/>
+            <item identifierRef="id-8f61b419-e643-419e-b486-461f99c73ced"/>
         </item>
         <item>
             <label xml:lang="de">Other</label>
@@ -2368,6 +2380,7 @@
             <item identifierRef="id-0573edbe-2c49-409d-aa43-e0f22672652a"/>
             <item identifierRef="id-b5b9b799-22f1-456c-bfa8-19ad7384f39b"/>
             <item identifierRef="id-27544949-e3fd-4e58-82e6-38afeccf0128"/>
+            <item identifierRef="id-451266e2-d6f7-441f-b2aa-b162c8f619db"/>
         </item>
         <item>
             <label xml:lang="de">Views</label>
@@ -5581,6 +5594,28 @@
                         </font>
                     </style>
                 </node>
+                <node identifier="id-d973b8c7-b1c7-4459-9a62-00ce7ebd7299"
+                      elementRef="id-27c18bb2-4cb0-4132-b4c1-ff71973d09f3" xsi:type="Element" x="768" y="84" w="120"
+                      h="55">
+                    <style>
+                        <fillColor r="204" g="204" b="255"/>
+                        <lineColor r="92" g="92" b="92"/>
+                        <font name="Segoe UI" size="9">
+                            <color r="0" g="0" b="0"/>
+                        </font>
+                    </style>
+                </node>
+                <node identifier="id-f2020497-fc3c-4b5e-983c-af331e5d32a7"
+                      elementRef="id-8f61b419-e643-419e-b486-461f99c73ced" xsi:type="Element" x="972" y="48" w="120"
+                      h="55">
+                    <style>
+                        <fillColor r="204" g="204" b="255"/>
+                        <lineColor r="92" g="92" b="92"/>
+                        <font name="Segoe UI" size="9">
+                            <color r="0" g="0" b="0"/>
+                        </font>
+                    </style>
+                </node>
                 <connection identifier="id-fdaf60be-6582-4ec1-8b95-b844c616213b"
                             relationshipRef="id-142b5893-1dae-49cc-beec-a34890800068" xsi:type="Relationship"
                             source="id-bd2047b8-e8f1-4dff-bfae-c146263889b9"
@@ -5728,6 +5763,17 @@
                             relationshipRef="id-abed55ce-5db3-4b5c-9f6c-b86ecd913462" xsi:type="Relationship"
                             source="id-79744996-13fc-4a21-b72b-6e35e6db9a6a"
                             target="id-9fe1082e-1448-4b92-9b46-331ecc332ae5">
+                    <style>
+                        <lineColor r="0" g="0" b="0"/>
+                        <font name="Segoe UI" size="9">
+                            <color r="0" g="0" b="0"/>
+                        </font>
+                    </style>
+                </connection>
+                <connection identifier="id-c476b201-49ed-4c65-9424-c0395bfb52a8"
+                            relationshipRef="id-e1c3c710-7875-4290-a5b0-95ebdc942903" xsi:type="Relationship"
+                            source="id-79744996-13fc-4a21-b72b-6e35e6db9a6a"
+                            target="id-d973b8c7-b1c7-4459-9a62-00ce7ebd7299">
                     <style>
                         <lineColor r="0" g="0" b="0"/>
                         <font name="Segoe UI" size="9">
@@ -6069,6 +6115,28 @@
                             relationshipRef="id-393db270-cab8-422c-b531-e971221f3c4f" xsi:type="Relationship"
                             source="id-7f918dff-362f-4c83-825f-038998d7b567"
                             target="id-6cb23502-0d69-4727-b71b-88ac4f77375a">
+                    <style>
+                        <lineColor r="0" g="0" b="0"/>
+                        <font name="Segoe UI" size="9">
+                            <color r="0" g="0" b="0"/>
+                        </font>
+                    </style>
+                </connection>
+                <connection identifier="id-5acbfcac-35a2-4c35-b681-9cc733a33851"
+                            relationshipRef="id-451266e2-d6f7-441f-b2aa-b162c8f619db" xsi:type="Relationship"
+                            source="id-f2020497-fc3c-4b5e-983c-af331e5d32a7"
+                            target="id-d973b8c7-b1c7-4459-9a62-00ce7ebd7299">
+                    <style>
+                        <lineColor r="0" g="0" b="0"/>
+                        <font name="Segoe UI" size="9">
+                            <color r="0" g="0" b="0"/>
+                        </font>
+                    </style>
+                </connection>
+                <connection identifier="id-da497eea-2351-4485-bc87-f9e0c6c7c9be"
+                            relationshipRef="id-1d811f01-aeed-48bf-b5fe-0eb05e1c2b88" xsi:type="Relationship"
+                            source="id-f2020497-fc3c-4b5e-983c-af331e5d32a7"
+                            target="id-cddd08cb-4351-4835-a4a6-127bd47f7580">
                     <style>
                         <lineColor r="0" g="0" b="0"/>
                         <font name="Segoe UI" size="9">
