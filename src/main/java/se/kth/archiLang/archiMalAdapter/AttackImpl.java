@@ -152,7 +152,7 @@ public class AttackImpl implements Attack {
         StringBuilder qualifiedName = new StringBuilder();
 
         if (extension) {
-            qualifiedName.append(MetaElements.format(elementContainer.getNameOfElement(getRelatedClass())) + ".");
+            qualifiedName.append(WordUtils.uncapitalize(MetaElements.format(elementContainer.getNameOfElement(getRelatedClass()))) + ".");
         }
 
         qualifiedName.append(getName());
