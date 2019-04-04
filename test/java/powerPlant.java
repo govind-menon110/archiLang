@@ -35,8 +35,8 @@ public class powerPlant {
        // QUESTION: How is Cooler connected with PumpCompressor (AuxilaryRotatingEquipment)? Answer: maybe via the Auxiliaries!
        PumpCompressor coolerPump1 = new PumpCompressor("CoolerPump1");
        PumpCompressor coolerPump2 = new PumpCompressor("CoolerPump2");
-       coolerPump1.addAuxiliariesRotatingEquipment(auxRotEquipment);
-       coolerPump2.addAuxiliariesRotatingEquipment(auxRotEquipment);
+       coolerPump1.addAuxiliariesRotatingEquipment(coolerAuxNonRotEquipment);
+       coolerPump2.addAuxiliariesRotatingEquipment(coolerAuxNonRotEquipment);
        // QUESTION: How is coolerPump1 and coolerPump2 connected with coolerValve? Answer: again the same?
        Valve coolerValve = new Valve("CoolerValve");
        cooler.addValveCooler(coolerValve);
@@ -47,9 +47,9 @@ public class powerPlant {
        Valve waterPumpValve1 = new Valve("WaterPumpValve1");
        Valve waterPumpValve2 = new Valve("WaterPumpValve2");
        Valve waterPumpValve3 = new Valve("WaterPumpValve3");
-       feedWaterPump1.addAuxiliariesNonRotatingEquipment(auxRotEquipment); // This is corrected
-       feedWaterPump2.addAuxiliariesNonRotatingEquipment(auxRotEquipment);
-       feedWaterPump3.addAuxiliariesNonRotatingEquipment(auxRotEquipment);
+       feedWaterPump1.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment); // This is corrected
+       feedWaterPump2.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
+       feedWaterPump3.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
        // Heater (to High pressure turbine)
        Heater heater1 = new Heater("Heater1");
        heater1.addHeaterFuel(fuel);
