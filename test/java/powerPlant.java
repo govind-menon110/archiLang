@@ -28,7 +28,7 @@ public class powerPlant {
        Comntroller coolerController = new Controller("CoolerController");
        coolant.addValveCoolant(coolantValve);
        coolant.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
-       cooler.addConroller(coolerController);
+       cooler.addController(coolerController);
        cooler.addCoolantCooler(coolant);
        coller.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
        plant.addCooler(cooler);
@@ -88,7 +88,7 @@ public class powerPlant {
        // Hydraulic Control System
        Controller hydrSysController = new Controller("HydraulicSysController");
        HydraulicControlSystem hydrCtrlSystem = new HydraulicControlSystem("HydraulicCtrlSys");
-       hydrCtrlSystem.addConroller(hydrSysController);
+       hydrCtrlSystem.addController(hydrSysController);
        hydrCtrlSystem.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
        // Add Valves to HydraulicControlSystem
        hydrCtrlSystem.addValve(waterPumpValve1);
