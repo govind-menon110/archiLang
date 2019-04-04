@@ -13,10 +13,10 @@ public class powerPlant {
        PowerPlant plant = new PowerPlant("PowerPlant");
        FeedWaterTank fwaterTank = new FeedWaterTank("FeedWaterTank");
        Fuel fuel = new Fuel("Fuel");
-       fuel.addAuxilariesNonRotatingEquipment(heaterAuxNonRotEquipment); // WARNING: This association does not exist!
-       AuxilariesRotatingEquipment auxRotEquipment = new AuxilariesRotatingEquipment("AuxRotEquipment");
-       AuxilariesNonRotatingEquipment heaterAuxNonRotEquipment = new AuxilariesNonRotatingEquipment("HeaterAuxNonRotEquipment");
-       AuxilariesNonRotatingEquipment coolerAuxNonRotEquipment = new AuxilariesNonRotatingEquipment("CoolerAuxNonRotEquipment");
+       fuel.addAuxiliariesNonRotatingEquipment(heaterAuxNonRotEquipment); // WARNING: This association does not exist!
+       AuxiliariesRotatingEquipment auxRotEquipment = new AuxiliariesRotatingEquipment("AuxRotEquipment");
+       AuxiliariesNonRotatingEquipment heaterAuxNonRotEquipment = new AuxiliariesNonRotatingEquipment("HeaterAuxNonRotEquipment");
+       AuxiliariesNonRotatingEquipment coolerAuxNonRotEquipment = new AuxiliariesNonRotatingEquipment("CoolerAuxNonRotEquipment");
        // Then connect them with each other
        gridSwitch.addTransmissionGrid(grid);
        plant.addTransmissionGrid(grid);
@@ -27,16 +27,16 @@ public class powerPlant {
        Cooler cooler = new Cooler("Cooler");
        Comntroller coolerController = new Controller("CoolerController");
        coolant.addValveCoolant(coolantValve);
-       coolant.addAuxilariesNonRotatingEquipment(coolerAuxNonRotEquipment);
+       coolant.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
        cooler.addConroller(coolerController);
        cooler.addCoolantCooler(coolant);
-       coller.addAuxilariesNonRotatingEquipment(coolerAuxNonRotEquipment);
+       coller.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
        plant.addCooler(cooler);
-       // QUESTION: How is Cooler connected with PumpCompressor (AuxilaryRotatingEquipment)? Answer: maybe via the auxilaries!
+       // QUESTION: How is Cooler connected with PumpCompressor (AuxilaryRotatingEquipment)? Answer: maybe via the Auxiliaries!
        PumpCompressor coolerPump1 = new PumpCompressor("CoolerPump1");
        PumpCompressor coolerPump2 = new PumpCompressor("CoolerPump2");
-       coolerPump1.addAuxilariesRotatingEquipment(auxRotEquipment);
-       coolerPump2.addAuxilariesRotatingEquipment(auxRotEquipment);
+       coolerPump1.addAuxiliariesRotatingEquipment(auxRotEquipment);
+       coolerPump2.addAuxiliariesRotatingEquipment(auxRotEquipment);
        // QUESTION: How is coolerPump1 and coolerPump2 connected with coolerValve? Answer: again the same?
        Valve coolerValve = new Valve("CoolerValve");
        cooler.addValveCooler(coolerValve);
@@ -47,20 +47,20 @@ public class powerPlant {
        Valve waterPumpValve1 = new Valve("WaterPumpValve1");
        Valve waterPumpValve2 = new Valve("WaterPumpValve2");
        Valve waterPumpValve3 = new Valve("WaterPumpValve3");
-       feedWaterPump1.addAuxilariesRotatingEquipment(auxRotEquipment); // Is this correct, because it does not match the associations but matches the model!
-       feedWaterPump2.addAuxilariesRotatingEquipment(auxRotEquipment);
-       feedWaterPump3.addAuxilariesRotatingEquipment(auxRotEquipment);
+       feedWaterPump1.addAuxiliariesNonRotatingEquipment(auxRotEquipment); // This is corrected
+       feedWaterPump2.addAuxiliariesNonRotatingEquipment(auxRotEquipment);
+       feedWaterPump3.addAuxiliariesNonRotatingEquipment(auxRotEquipment);
        // Heater (to High pressure turbine)
        Heater heater1 = new Heater("Heater1");
        heater1.addHeaterFuel(fuel);
-       heater1.addAuxilariesNonRotatingEquipment(heaterAuxNonRotEquipment);
+       heater1.addAuxiliariesNonRotatingEquipment(heaterAuxNonRotEquipment);
        plant.addHeater(heater1);
        Valve heaterValve1 = Valve("HeaterValve1");
        Valve heaterValve2 = Valve("HeaterValve2");
        // Heater2 (to intermediate pressure turbine)
        Heater heater2 = new Heater("Heater2");
        heater2.addHeaterFuel(fuel);
-       heater2.addAuxilariesNonRotatingEquipment(heaterAuxNonRotEquipment);
+       heater2.addAuxiliariesNonRotatingEquipment(heaterAuxNonRotEquipment);
        plant.addHeater(heater2);
        Valve heater2Valve1 = Valve("Heater2Valve1");
        Valve heater2Valve2 = Valve("Heater2Valve2");
@@ -68,13 +68,13 @@ public class powerPlant {
        Turbine highPressTurbine = new Turbine("HighPressureTurbine");
        Turbine intermediatePressTurbine = new Turbine("IntermediatePressureTurbine");
        Turbine lowPressTurbine = new Turbine("LowPressureTurbine");
-       highPressTurbine.addAuxilariesRotatingEquipment(auxRotEquipment);
-       intermediatePressTurbine.addAuxilariesRotatingEquipment(auxRotEquipment);
-       lowPressTurbine.addAuxilariesRotatingEquipment(auxRotEquipment);
+       highPressTurbine.addAuxiliariesRotatingEquipment(auxRotEquipment);
+       intermediatePressTurbine.addAuxiliariesRotatingEquipment(auxRotEquipment);
+       lowPressTurbine.addAuxiliariesRotatingEquipment(auxRotEquipment);
        // QUESTION: How are turbines connected to the generator? How is then the generator connected to the transmission grid?
        // All turbines are connected to the generator by a solid shaft
        Generator generator = new Generator("Generator");
-       generator.addAuxilariesRotatingEquipment(auxRotEquipment); //WARNING: This association does not exist!
+       generator.addAuxiliariesRotatingEquipment(auxRotEquipment); //WARNING: This association does not exist!
        // Measurements
        Measurements turbineAndGenMeasurements = new Measurements("TurbineAndGeneratorMeasurements");
        highPressTurbine.addMeasurements(turbineAndGenMeasurements);
@@ -89,7 +89,7 @@ public class powerPlant {
        Controller hydrSysController = new Controller("HydraulicSysController");
        HydraulicControlSystem hydrCtrlSystem = new HydraulicControlSystem("HydraulicCtrlSys");
        hydrCtrlSystem.addConroller(hydrSysController);
-       hydrCtrlSystem.addAuxilariesNonRotatingEquipment(coolerAuxNonRotEquipment);
+       hydrCtrlSystem.addAuxiliariesNonRotatingEquipment(coolerAuxNonRotEquipment);
        // Add Valves to HydraulicControlSystem
        hydrCtrlSystem.addValve(waterPumpValve1);
        hydrCtrlSystem.addValve(waterPumpValve2);
