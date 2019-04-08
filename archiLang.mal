@@ -3,7 +3,7 @@
 // Date: March 2019
 
 // Including coreLang
-include modelingInterface.mal
+//include modelingInterface.mal
 
 // Motivation elements are used to model the motivations, or reasons, that guide the design or change of an Enterprise Architecture. It is not a layer but an aspect!
 category Motivation {
@@ -18,8 +18,8 @@ category Motivation {
 
 	}
 
-	asset Assesment
-		info: "Assesment motivation element represents a threat in our case"
+	asset Assessment
+		info: "Assessment motivation element represents a threat in our case"
 	{
 
 	}
@@ -283,7 +283,7 @@ category Technology {
 
 category Physical {
 
-	asset Equipment extends Machine
+	asset Equipment //extends Machine
 	{
 
 	}

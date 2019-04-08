@@ -13,7 +13,7 @@ category MainCategory {
 			-> powerOutage
 
 		| powerOutage
-			-> //TODO
+			//-> TODO
 
 		| _abstractEvent
 			-> plantDamage
@@ -55,9 +55,9 @@ category MainCategory {
 
 	}
 
-	asset Auxilaries extends ControlledSystem
+	asset Auxiliaries extends ControlledSystem
 	{
-		| shutDownAuxilaries
+		| shutDownAuxiliaries
 			-> system.systemFailure
 
 		| shutDownBlowers
@@ -68,10 +68,10 @@ category MainCategory {
 	asset Controller extends Equipment
 	{
 		| closeValves
-			-> cooler.shutDown
+			-> controlledSystem.shutDown // cooler
 
 		| reduceFlow
-			-> heater.materialFailure
+			-> controlledSystem.materialFailure // heater
 
 		| blocking
 			-> rotatingEquipment.overspeed
@@ -86,6 +86,12 @@ category MainCategory {
 		| influence
 
 		| systemFailure
+
+		| shutDown
+
+		| materialFailure
+
+		| _influenceMeasurement
 	}
 
 	asset Pump extends ControlledSystem
@@ -106,9 +112,9 @@ category MainCategory {
 	asset Lubrication extends Equipment
 	{
 		| fire
-			-> //TODO
+			//-> TODO
 		| explosion
-			-> //TODO
+			//-> TODO
 
 		| reducedFlow
 			-> rotatingEquipment.systemFailure
@@ -124,37 +130,38 @@ category MainCategory {
 			-> influenceMeasurement
 
 		| influenceMeasurement
-			-> controller._influenceMeasurement
+			-> measuredSystem._influenceMeasurement
 	}
 
 }
 
 associations {
-	PowerPlant 	[plant]				1 <--	PlantControlledSystem		-->	*	[system]			ControlledSystem
+	PowerPlant 	[plant]				1 <--	PlantControlledSystem		--> *	[system]		ControlledSystem
 		info: "A plant has many controlled systems"
-	PowerPlant	[plant]				1 <--	PlantFeedWaterTank			--> *	[feedWaterTank]		FeedWaterTank
-	PowerPlant	[plant]				1 <--	PlantController				--> *	[controllers]		Controller
-	PowerPlant	[plant]				1 <--	PlantAuxilaries				--> *	[auxilaries]		Auxilaries
-	PowerPlant	[plant]				1 <--	PlantCooler					--> *	[coolers]			Cooler
-	PowerPlant	[plant]				1 <--	PlantHeater					--> *	[heaters]			Heater
+	PowerPlant	[plant]				1 <--	PlantFeedWaterTank		--> *	[feedWaterTank]		FeedWaterTank
+	PowerPlant	[plant]				1 <--	PlantController			--> *	[controllers]		Controller
+	PowerPlant	[plant]				1 <--	PlantAuxiliaries		--> *	[auxiliaries]		Auxiliaries
+	PowerPlant	[plant]				1 <--	PlantCooler			--> *	[coolers]		Cooler
+	PowerPlant	[plant]				1 <--	PlantHeater			--> *	[heaters]		Heater
 	PowerPlant	[plant]				1 <--	PlantRotatingEquipment 		--> *	[rotatingEquipment]	RotatingEquipment
 
-	Controller 	[controller] 		1 <-- 	SystemController			--> *	[controlledSystem]	ControlledSystem
+	Controller 	[controller] 			1 <-- 	SystemController		--> *	[controlledSystem]	ControlledSystem
 		info: "Every controller controls one or more controlled system(s)"
-	Controller 	[controller] 		1 <-- 	CoolerController			--> 1	[cooler]			Cooler
-	Controller 	[controller] 		1 <-- 	RotatingEquipmentontroller 	--> 1	[rotatingEquipment]	RotatingEquipment
-	Auxilaries 	[auxilaries] 		1 <-- 	SystemAuxilaries			--> *	[system]			ControlledSystem
-		info: "A controlled system may have system auxilaries"
-	Auxilaries 	[auxilaries] 		1 <-- 	PumpAuxilaries				--> 1	[pump]				Pump
-	Auxilaries 	[auxilaries] 		1 <-- 	HeaterAuxilaries			--> 1	[heater]			Heater
+	Controller 	[controller] 			1 <-- 	CoolerController		--> 1	[cooler]		Cooler
+	Controller 	[controller] 			1 <-- 	RotatingEquipmentontroller 	--> 1	[rotatingEquipment]	RotatingEquipment
+	Auxiliaries 	[auxiliaries] 			1 <-- 	SystemAuxiliaries		--> *	[system]		ControlledSystem
+		info: "A controlled system may have system auxiliaries"
+	Auxiliaries 	[auxiliaries] 			1 <-- 	PumpAuxiliaries			--> 1	[pump]			Pump
+	Auxiliaries 	[auxiliaries] 			1 <-- 	HeaterAuxiliaries		--> 1	[heater]		Heater
 
-	SealSystem 	[sealSystem] 		1 <-- 	SealSystemLubrication		--> 1	[lubrication]		Lubrication
-	Cooler 		[cooler] 			1 <-- 	CoolerLubrication			--> 1	[lubrication]		Lubrication
+	SealSystem 	[sealSystem] 			1 <-- 	SealSystemLubrication		--> 1	[lubrication]		Lubrication
+	Cooler 		[cooler] 			1 <-- 	CoolerLubrication		--> 1	[lubrication]		Lubrication
 
-	Lubrication [lubrication]		1 <--	RotatingEquipmentLubrication--> 1	[rotatingEquipment]	RotatingEquipment
+	Lubrication [lubrication]			1 <--	RotatingEquipmentLubrication	--> 1	[rotatingEquipment]	RotatingEquipment
 		info: "RotatingEquipment has lubrication"
 
-	ControlledSystem [system]		1 <--	SystemRotatingEquipment		--> *	[rotatingEquipment]	RotatingEquipment
-		info: "A controlled system may have rotating equipemnt(s)"
+	ControlledSystem [system]			1 <--	SystemRotatingEquipment		--> *	[rotatingEquipment]	RotatingEquipment
+		info: "A controlled system may have rotating equipment(s)"
+	Measurements [measurement]		      0-1 <--	EquipmentMeasurement		--> 0-1	[measuredSystem]	ControlledSystem
 
 }
