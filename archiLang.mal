@@ -1,9 +1,9 @@
 // archiLang
 // Author: Sotirios Katsikeas (sotkat@kth.se)
-// Date: March 2019
+// Date: April 2019
 
 // Including coreLang
-//include modelingInterface.mal
+include modelingInterface.mal
 
 // Motivation elements are used to model the motivations, or reasons, that guide the design or change of an Enterprise Architecture. It is not a layer but an aspect!
 category Motivation {
@@ -114,7 +114,7 @@ category Business {
 
 	}
 
-	asset BussinesInteraction
+	asset BusinessInteraction
 	{
 
 	}
@@ -144,7 +144,7 @@ category Business {
 
 	}
 
-	asset Product
+	asset BusinessProduct
 	{
 
 	}
@@ -283,7 +283,7 @@ category Technology {
 
 category Physical {
 
-	asset Equipment //extends Machine
+	asset Equipment extends Machine
 	{
 
 	}
