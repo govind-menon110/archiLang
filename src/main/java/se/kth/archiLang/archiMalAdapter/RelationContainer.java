@@ -20,7 +20,8 @@ public class RelationContainer {
     }
 
     public void add(Relation relation) {
-        if (!(relations.containsKey(relation.getSink())
+        if (!(relation.getSink().equals(relation.getSource())) &&
+                !(relations.containsKey(relation.getSink())
                 && relations.get(relation.getSink()).containsKey(relation.getSource()))) {
             if (!relations.containsKey(relation.getSource())) {
                 relations.put(relation.getSource(), new HashMap<>());
