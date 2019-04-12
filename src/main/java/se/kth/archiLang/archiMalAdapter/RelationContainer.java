@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class RelationContainer {
-    HashMap<String, HashMap<String, Relation>> relations = new HashMap<>();
+    private HashMap<String, HashMap<String, Relation>> relations = new HashMap<>();
 
     public List<Relation> getList() {
         List<Relation> list = new LinkedList<>();
@@ -20,9 +20,12 @@ public class RelationContainer {
     }
 
     public void add(Relation relation) {
-        if (!relations.containsKey(relation.getSource())) {
-            relations.put(relation.getSource(), new HashMap<>());
+        if (!(relations.containsKey(relation.getSink())
+                && relations.get(relation.getSink()).containsKey(relation.getSource()))) {
+            if (!relations.containsKey(relation.getSource())) {
+                relations.put(relation.getSource(), new HashMap<>());
+            }
+            relations.get(relation.getSource()).put(relation.getSink(), relation);
         }
-        relations.get(relation.getSource()).put(relation.getSink(), relation);
     }
 }
