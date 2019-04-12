@@ -13,7 +13,7 @@ import java.util.List;
 public class MetaElements {
     private List<Class> classes = new LinkedList<>();
     private ElementContainer elementContainer;
-    private List<Relation> relations = new LinkedList<>();
+    private RelationContainer relations = new RelationContainer();
 
     public MetaElements(ModelType exchangeModel) {
         elementContainer = new ElementContainer(exchangeModel.getRelationships().getRelationship(),
@@ -112,7 +112,7 @@ public class MetaElements {
     }
 
     public List<Relation> getRelations() {
-        return relations;
+        return relations.getList();
     }
 
     private void getExtends(ElementType elementType, List<String> extended) {

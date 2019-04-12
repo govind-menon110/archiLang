@@ -19,9 +19,9 @@ public class AttackImpl implements Attack {
     private String name;
     private ElementContainer elementContainer;
     private String relatedRelation;
-    private List<Relation> relations;
+    private RelationContainer relations;
 
-    public AttackImpl(String identifier, ElementContainer elementContainer, List<Relation> relations) {
+    public AttackImpl(String identifier, ElementContainer elementContainer, RelationContainer relations) {
         name = MetaElements.format(elementContainer.get(identifier).getNameGroup().get(0).getValue());
         this.elementContainer = elementContainer;
         this.relations = relations;
@@ -85,9 +85,6 @@ public class AttackImpl implements Attack {
             String source = this.relatedClass;
             String sink = attack.getRelatedClass();
 
-            if (attack.getName().equals("StopElectricityProduction")) {
-                System.out.println();
-            }
 
             String sourceName = MetaElements.format(elementContainer.getNameOfElement(source));
             String sinkName = MetaElements.format(elementContainer.getNameOfElement(sink));
@@ -96,9 +93,7 @@ public class AttackImpl implements Attack {
 
             String targetRelatedLabel = rel.getSinkLabel();
 
-            if (!elementContainer.relationExists(source, sink)) {
-                relations.add(rel);
-            }
+            relations.add(rel);
 
             attack.setRelatedRelation(targetRelatedLabel);
 
