@@ -57,10 +57,12 @@ public class Generator {
         //add Relations
         builder.append("associations {" + System.lineSeparator());
 
+        int counter = 0;
+
         for (Relation relation : elements.getRelations()) {
-            builder.append(relation.getSource() + " [" + relation.getSourceLabel() + "] ");
+            builder.append(relation.getSource() + " [" + relation.getSourceLabel() + counter++ + "] ");
             builder.append(relation.getSourceCarindality() + " <-- " + relation.getName() + " --> " + relation.getSinkCardinality() + " ");
-            builder.append("[" + relation.getSinkLabel() + "] " + relation.getSink() + System.lineSeparator());
+            builder.append("[" + relation.getSinkLabel() + counter++ + "] " + relation.getSink() + System.lineSeparator());
         }
 
         builder.append("}" + System.lineSeparator());
