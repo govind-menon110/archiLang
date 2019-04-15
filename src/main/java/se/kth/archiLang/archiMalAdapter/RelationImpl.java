@@ -59,12 +59,12 @@ public class RelationImpl implements se.kth.archiLang.malInterface.metaElements.
 
     @Override
     public String getSourceLabel() {
-        return WordUtils.uncapitalize(source);
+        return WordUtils.uncapitalize(source + sink);
     }
 
     @Override
     public String getSinkLabel() {
-        return WordUtils.uncapitalize(sink);
+        return WordUtils.uncapitalize(sink + source);
     }
 
     @Override

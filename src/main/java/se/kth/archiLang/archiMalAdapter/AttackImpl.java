@@ -20,6 +20,11 @@ public class AttackImpl implements Attack {
     private ElementContainer elementContainer;
     private String relatedRelation;
     private RelationContainer relations;
+    private Relation relatedRelationImpl;
+
+    public void setRelatedRelationImpl(Relation relatedRelationImpl) {
+        this.relatedRelationImpl = relatedRelationImpl;
+    }
 
     public AttackImpl(String identifier, ElementContainer elementContainer, RelationContainer relations) {
         name = MetaElements.format(elementContainer.get(identifier).getNameGroup().get(0).getValue());
@@ -95,6 +100,7 @@ public class AttackImpl implements Attack {
 
             relations.add(rel);
 
+            attack.setRelatedRelationImpl(rel);
             attack.setRelatedRelation(targetRelatedLabel);
 
             attacks.add(attack);
@@ -147,7 +153,7 @@ public class AttackImpl implements Attack {
         StringBuilder qualifiedName = new StringBuilder();
 
         if (extension) {
-            qualifiedName.append(WordUtils.uncapitalize(MetaElements.format(elementContainer.getNameOfElement(getRelatedClass()))) + ".");
+            qualifiedName.append(relatedRelationImpl.getSinkLabel() + ".");
         }
 
         qualifiedName.append(getName());
