@@ -703,6 +703,22 @@
         </property>
       </properties>
     </element>
+      <element identifier="id-58f776ae-16f8-4d74-80de-2279e7fd33fc" xsi:type="Assessment">
+          <name xml:lang="de">Reduce flow</name>
+          <properties>
+              <property propertyDefinitionRef="propid-4">
+                  <value xml:lang="de">Threat</value>
+              </property>
+          </properties>
+      </element>
+      <element identifier="id-8c183273-038b-46ca-8e0d-d65fd3902344" xsi:type="Assessment">
+          <name xml:lang="de">Shut down Coal mills</name>
+          <properties>
+              <property propertyDefinitionRef="propid-4">
+                  <value xml:lang="de">Threat</value>
+              </property>
+          </properties>
+      </element>
     <element identifier="id-f75f4b45-c0f5-4a5e-915e-ffb5ccd4c958" xsi:type="Assessment">
       <name xml:lang="de">Shut down blowers</name>
       <properties>
@@ -1147,9 +1163,10 @@
     <relationship identifier="id-184eb912-7ccf-406c-a5a4-1dc460defa85" source="id-2c6ef292-161c-450f-89d1-9a4558424e77" target="id-c264a984-c3c3-4592-a32b-0890fb041af1" xsi:type="Aggregation" />
     <relationship identifier="id-d8d51227-d485-43b0-8f02-be5f83d99f24" source="id-86daadaa-ab49-4bfd-b059-94962884e2ef" target="id-6f88044a-ee51-448d-ac38-524c08ae5691" xsi:type="Association" />
     <relationship identifier="id-dffb4a5e-8cc8-437c-8307-fa24b5c17749" source="id-6f88044a-ee51-448d-ac38-524c08ae5691" target="id-118197d6-2780-4699-8ae2-69ad64c6c42c" xsi:type="Influence" />
-    <relationship identifier="id-b84910a2-7208-4408-9703-5b04b15b8627" source="id-118197d6-2780-4699-8ae2-69ad64c6c42c" target="id-286079bf-8ff6-4926-b221-1c2955ac4cc6" xsi:type="Association" />
     <relationship identifier="id-735a66a9-9385-4629-bfc9-a5b1e4517061" source="id-96ea0dbf-cb6f-45a5-8b60-bacc861619fc" target="id-5ecba25a-4522-4fdc-861d-8e09349dfaf7" xsi:type="Association" />
-    <relationship identifier="id-f3b4a2d9-f353-4b13-8e96-f9cad8ae8c8e" source="id-7fff9426-f9a1-4d96-ade1-522bfe381cfa" target="id-c264a984-c3c3-4592-a32b-0890fb041af1" xsi:type="Association" />
+      <relationship identifier="id-f3b4a2d9-f353-4b13-8e96-f9cad8ae8c8e"
+                    source="id-58f776ae-16f8-4d74-80de-2279e7fd33fc" target="id-c264a984-c3c3-4592-a32b-0890fb041af1"
+                    xsi:type="Association"/>
     <relationship identifier="id-333f0023-e4da-43e3-880e-f6671f08e80b" source="id-7fff9426-f9a1-4d96-ade1-522bfe381cfa" target="id-2735dd6b-2254-4609-a2af-d970e9d9c33e" xsi:type="Association" />
     <relationship identifier="id-af43bce3-8642-4b0b-b23d-848818cd3ae1" source="id-7fff9426-f9a1-4d96-ade1-522bfe381cfa" target="id-96ea0dbf-cb6f-45a5-8b60-bacc861619fc" xsi:type="Influence" />
     <relationship identifier="id-13eab38b-d0e0-4b26-abfa-67f3d6e388ab" source="id-5ecba25a-4522-4fdc-861d-8e09349dfaf7" target="id-a4950fb3-516a-478e-bcae-fe7297b172ae" xsi:type="Association" />
@@ -1299,7 +1316,9 @@
     <relationship identifier="id-7c2587ed-a8be-435f-8552-cc4f3bbca736" source="id-57b60974-6344-4a4b-98e9-2f5466704abd" target="id-bce3df5d-f595-44fd-bb8c-f72cb62c93d1" xsi:type="Influence" />
     <relationship identifier="id-d77d0cd2-eeb6-48d5-81ff-fbafb9dc8b03" source="id-32bafabb-3c16-4055-bbd7-975dc98ade1a" target="id-d6418e7d-7093-4fdb-a724-921e39344b33" xsi:type="Association" />
     <relationship identifier="id-4d52e0dc-bc9c-49a7-ac82-4810b829278e" source="id-32bafabb-3c16-4055-bbd7-975dc98ade1a" target="id-79f7e512-ece2-4e2d-9c57-8c12f6529d85" xsi:type="Influence" />
-    <relationship identifier="id-4dffe443-d11c-4572-926f-53a7a025d4c8" source="id-32bafabb-3c16-4055-bbd7-975dc98ade1a" target="id-c3b28e77-379a-43a7-a3a6-0d235ec4da5b" xsi:type="Association" />
+      <relationship identifier="id-4dffe443-d11c-4572-926f-53a7a025d4c8"
+                    source="id-8c183273-038b-46ca-8e0d-d65fd3902344" target="id-c3b28e77-379a-43a7-a3a6-0d235ec4da5b"
+                    xsi:type="Association"/>
     <relationship identifier="id-8949f1cc-4e11-45a7-b38f-485091f45f04" source="id-f75f4b45-c0f5-4a5e-915e-ffb5ccd4c958" target="id-d6418e7d-7093-4fdb-a724-921e39344b33" xsi:type="Association" />
     <relationship identifier="id-3389e4a5-500b-4d6f-bba7-9eb1abec3267" source="id-5ecba25a-4522-4fdc-861d-8e09349dfaf7" target="id-4694fa68-5a12-4b77-bd28-af6eb3f0035a" xsi:type="Association" />
     <relationship identifier="id-a35c4ad6-0c86-4fb0-a704-1a5829b3f879" source="id-4694fa68-5a12-4b77-bd28-af6eb3f0035a" target="id-bce3df5d-f595-44fd-bb8c-f72cb62c93d1" xsi:type="Influence" />
@@ -1412,6 +1431,12 @@
       <relationship identifier="id-2d761dae-a3df-4c1d-bbd1-fda02992f854"
                     source="id-c264a984-c3c3-4592-a32b-0890fb041af1" target="id-c4a59335-cd91-4819-90e9-179f14383bcb"
                     xsi:type="Association"/>
+      <relationship identifier="id-4e5f7fef-ecf4-4d0c-a2d9-deef7c4f52ad"
+                    source="id-58f776ae-16f8-4d74-80de-2279e7fd33fc" target="id-96ea0dbf-cb6f-45a5-8b60-bacc861619fc"
+                    xsi:type="Influence"/>
+      <relationship identifier="id-41cc2d02-f125-42cb-9866-bdaee49fb413"
+                    source="id-8c183273-038b-46ca-8e0d-d65fd3902344" target="id-79f7e512-ece2-4e2d-9c57-8c12f6529d85"
+                    xsi:type="Influence"/>
   </relationships>
     <organizations>
         <item>
@@ -1564,6 +1589,8 @@
             <item identifierRef="id-905b649f-28da-4431-91a6-013f9527cd4f"/>
             <item identifierRef="id-e5939f09-dfac-4506-b3f2-33bc71c7f990"/>
             <item identifierRef="id-8f61b419-e643-419e-b486-461f99c73ced"/>
+            <item identifierRef="id-58f776ae-16f8-4d74-80de-2279e7fd33fc"/>
+            <item identifierRef="id-8c183273-038b-46ca-8e0d-d65fd3902344"/>
         </item>
         <item>
             <label xml:lang="de">Other</label>
@@ -1586,7 +1613,6 @@
             <item identifierRef="id-184eb912-7ccf-406c-a5a4-1dc460defa85"/>
             <item identifierRef="id-d8d51227-d485-43b0-8f02-be5f83d99f24"/>
             <item identifierRef="id-dffb4a5e-8cc8-437c-8307-fa24b5c17749"/>
-            <item identifierRef="id-b84910a2-7208-4408-9703-5b04b15b8627"/>
             <item identifierRef="id-735a66a9-9385-4629-bfc9-a5b1e4517061"/>
             <item identifierRef="id-f3b4a2d9-f353-4b13-8e96-f9cad8ae8c8e"/>
             <item identifierRef="id-333f0023-e4da-43e3-880e-f6671f08e80b"/>
@@ -1847,6 +1873,8 @@
             <item identifierRef="id-0aa7ed90-0ae1-451a-a8e9-38237e8032a1"/>
             <item identifierRef="id-7ceadcb2-d03d-4bb0-8da8-479fafa6e958"/>
             <item identifierRef="id-2d761dae-a3df-4c1d-bbd1-fda02992f854"/>
+            <item identifierRef="id-4e5f7fef-ecf4-4d0c-a2d9-deef7c4f52ad"/>
+            <item identifierRef="id-41cc2d02-f125-42cb-9866-bdaee49fb413"/>
         </item>
         <item>
             <label xml:lang="de">Views</label>
@@ -1977,14 +2005,6 @@
           </style>
         </connection>
         <connection identifier="id-499fbbd0-b885-437d-a953-d9eaabc111f1" relationshipRef="id-dffb4a5e-8cc8-437c-8307-fa24b5c17749" xsi:type="Relationship" source="id-87a20697-725b-475a-9845-cebd11955a30" target="id-8f440479-6f14-47b1-bd77-3fa388557e6b">
-          <style>
-            <lineColor r="0" g="0" b="0" />
-              <font name="Segoe UI" size="9">
-              <color r="0" g="0" b="0" />
-            </font>
-          </style>
-        </connection>
-        <connection identifier="id-c8083d24-eecf-4a55-94c6-5f5266e97879" relationshipRef="id-b84910a2-7208-4408-9703-5b04b15b8627" xsi:type="Relationship" source="id-8f440479-6f14-47b1-bd77-3fa388557e6b" target="id-197e5aa3-efec-4e4c-bf01-84afe157738d">
           <style>
             <lineColor r="0" g="0" b="0" />
               <font name="Segoe UI" size="9">
@@ -4358,33 +4378,6 @@
             </font>
           </style>
         </node>
-        <node identifier="id-7f918dff-362f-4c83-825f-038998d7b567" elementRef="id-6378e91d-132c-4350-a87a-c95240ea33b9" xsi:type="Element" x="257" y="261" w="120" h="55">
-          <style>
-              <fillColor r="204" g="204" b="255"/>
-            <lineColor r="92" g="92" b="92" />
-              <font name="Segoe UI" size="9">
-              <color r="0" g="0" b="0" />
-            </font>
-          </style>
-        </node>
-        <node identifier="id-d973b8c7-b1c7-4459-9a62-00ce7ebd7299" elementRef="id-27c18bb2-4cb0-4132-b4c1-ff71973d09f3" xsi:type="Element" x="768" y="84" w="120" h="55">
-          <style>
-              <fillColor r="204" g="204" b="255"/>
-            <lineColor r="92" g="92" b="92" />
-              <font name="Segoe UI" size="9">
-              <color r="0" g="0" b="0" />
-            </font>
-          </style>
-        </node>
-        <node identifier="id-f2020497-fc3c-4b5e-983c-af331e5d32a7" elementRef="id-8f61b419-e643-419e-b486-461f99c73ced" xsi:type="Element" x="972" y="48" w="120" h="55">
-          <style>
-              <fillColor r="204" g="204" b="255"/>
-            <lineColor r="92" g="92" b="92" />
-              <font name="Segoe UI" size="9">
-              <color r="0" g="0" b="0" />
-            </font>
-          </style>
-        </node>
         <connection identifier="id-fdaf60be-6582-4ec1-8b95-b844c616213b" relationshipRef="id-142b5893-1dae-49cc-beec-a34890800068" xsi:type="Relationship" source="id-bd2047b8-e8f1-4dff-bfae-c146263889b9" target="id-6cb23502-0d69-4727-b71b-88ac4f77375a">
           <style>
             <lineColor r="0" g="0" b="0" />
@@ -4495,14 +4488,6 @@
               <font name="Segoe UI" size="9">
               <color r="0" g="0" b="0" />
             </font>
-          </style>
-        </connection>
-        <connection identifier="id-c476b201-49ed-4c65-9424-c0395bfb52a8" relationshipRef="id-e1c3c710-7875-4290-a5b0-95ebdc942903" xsi:type="Relationship" source="id-79744996-13fc-4a21-b72b-6e35e6db9a6a" target="id-d973b8c7-b1c7-4459-9a62-00ce7ebd7299">
-          <style>
-            <lineColor r="0" g="0" b="0" />
-              <font name="Segoe UI" size="9">
-                  <color r="0" g="0" b="0"/>
-              </font>
           </style>
         </connection>
           <connection identifier="id-14e99571-746f-4d51-b4b3-02507d20423c"
@@ -4758,30 +4743,6 @@
           </style>
         </connection>
         <connection identifier="id-3faa9632-fc99-4d44-b167-bce4d86c931d" relationshipRef="id-181f0d8e-c971-4680-b47b-2d163be83eea" xsi:type="Relationship" source="id-e28f4661-82a6-4b61-a056-f23bdffd6309" target="id-01ed41b7-0664-4146-a641-9222830aecb6">
-          <style>
-            <lineColor r="0" g="0" b="0" />
-              <font name="Segoe UI" size="9">
-              <color r="0" g="0" b="0" />
-            </font>
-          </style>
-        </connection>
-        <connection identifier="id-d4bc409b-ed2b-4b22-9ebe-75dd077a6a28" relationshipRef="id-393db270-cab8-422c-b531-e971221f3c4f" xsi:type="Relationship" source="id-7f918dff-362f-4c83-825f-038998d7b567" target="id-6cb23502-0d69-4727-b71b-88ac4f77375a">
-          <style>
-            <lineColor r="0" g="0" b="0" />
-              <font name="Segoe UI" size="9">
-              <color r="0" g="0" b="0" />
-            </font>
-          </style>
-        </connection>
-        <connection identifier="id-5acbfcac-35a2-4c35-b681-9cc733a33851" relationshipRef="id-451266e2-d6f7-441f-b2aa-b162c8f619db" xsi:type="Relationship" source="id-f2020497-fc3c-4b5e-983c-af331e5d32a7" target="id-d973b8c7-b1c7-4459-9a62-00ce7ebd7299">
-          <style>
-            <lineColor r="0" g="0" b="0" />
-              <font name="Segoe UI" size="9">
-              <color r="0" g="0" b="0" />
-            </font>
-          </style>
-        </connection>
-        <connection identifier="id-da497eea-2351-4485-bc87-f9e0c6c7c9be" relationshipRef="id-1d811f01-aeed-48bf-b5fe-0eb05e1c2b88" xsi:type="Relationship" source="id-f2020497-fc3c-4b5e-983c-af331e5d32a7" target="id-cddd08cb-4351-4835-a4a6-127bd47f7580">
           <style>
             <lineColor r="0" g="0" b="0" />
               <font name="Segoe UI" size="9">
