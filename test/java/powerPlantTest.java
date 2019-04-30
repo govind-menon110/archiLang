@@ -246,8 +246,9 @@ public class powerPlantTest {
        hydraulicPLC.changeFirmware.assertCompromisedInstantaneously();
        generationPLC.changeFirmware.assertCompromisedInstantaneously();
        hydrSysController.noHydraulicControlOfValves.assertCompromisedInstantaneously();
-       heaterValve1.closeValves.assertUncompromised();
-       heater2Valve1.closeValves.assertUncompromised();
+       hydrCtrlSystem.manipulateValves.assertCompromisedInstantaneously();
+       heaterValve1.closeValves.assertCompromisedInstantaneously();
+       heater2Valve1.closeValves.assertCompromisedInstantaneously();
        highPressTurbine.stopRotation.assertUncompromised();
        highPressTurbine.systemFailure.assertUncompromised();
        intermediatePressTurbine.stopRotation.assertUncompromised();
@@ -257,7 +258,7 @@ public class powerPlantTest {
        generator.stopElectricityProduction.assertCompromisedInstantaneously();
        // This is the ultimate goal of an attacker!
        plant.damage.assertUncompromised();
-       plant.powerOutage.assertUncompromised();
+       plant.powerOutage.assertCompromisedInstantaneously();
     }
    
     @After
