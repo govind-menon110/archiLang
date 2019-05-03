@@ -795,6 +795,14 @@
         </property>
       </properties>
     </element>
+    <element identifier="id-3192a95a-d2c4-4972-8ba7-61a28b6035ab" xsi:type="Assessment">
+      <name xml:lang="de">Stop connected turbines</name>
+      <properties>
+        <property propertyDefinitionRef="propid-4">
+          <value xml:lang="de">Event</value>
+        </property>
+      </properties>
+    </element>
     <element identifier="id-f75f4b45-c0f5-4a5e-915e-ffb5ccd4c958" xsi:type="Assessment">
       <name xml:lang="de">Shut down blowers</name>
       <properties>
@@ -1545,6 +1553,9 @@
     <relationship identifier="id-8ce02310-3c27-42c8-9f55-24e5d42de617" source="id-45cbdf17-fb46-441a-985e-9ff8bce198d4" target="id-65435f18-7bf8-4870-ac34-1ea016f9fcd5" xsi:type="Influence" />
     <relationship identifier="id-325dd671-51f6-4f3e-ab26-ef124ad3687f" source="id-65435f18-7bf8-4870-ac34-1ea016f9fcd5" target="id-a4c38ebd-b6a0-4c2c-b91e-ab53d4ffc11e" xsi:type="Influence" />
     <relationship identifier="id-2b228104-9164-4c34-8e6d-26f9e0b87cca" source="id-65435f18-7bf8-4870-ac34-1ea016f9fcd5" target="id-45cbdf17-fb46-441a-985e-9ff8bce198d4" xsi:type="Association" />
+    <relationship identifier="id-91e1e9ae-5fcf-405f-8fce-23ec015f42c9" source="id-3192a95a-d2c4-4972-8ba7-61a28b6035ab" target="id-968d9bbb-5fda-4d56-983e-d4c2a7fff2a4" xsi:type="Association" />
+    <relationship identifier="id-673b4841-8023-405d-bf38-cdf51ea643d0" source="id-62464ca1-6e49-4b4f-a2a5-e0c5c076fb4d" target="id-3192a95a-d2c4-4972-8ba7-61a28b6035ab" xsi:type="Influence" />
+    <relationship identifier="id-a23b1a68-cba7-43f4-8566-ed017c6aec1b" source="id-3192a95a-d2c4-4972-8ba7-61a28b6035ab" target="id-6378e91d-132c-4350-a87a-c95240ea33b9" xsi:type="Influence" />
   </relationships>
   <propertyDefinitions>
     <propertyDefinition identifier="propid-2" type="string">

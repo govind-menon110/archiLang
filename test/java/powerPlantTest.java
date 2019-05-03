@@ -249,9 +249,9 @@ public class powerPlantTest {
        hydrCtrlSystem.manipulateValves.assertCompromisedInstantaneously();
        heaterValve1.closeValves.assertCompromisedInstantaneously();
        heater2Valve1.closeValves.assertCompromisedInstantaneously();
-       highPressTurbine.stopRotation.assertUncompromised();
+       highPressTurbine.stopRotation.assertCompromisedInstantaneouslyFrom(generator.stopConnectedTurbines);
        highPressTurbine.systemFailure.assertUncompromised();
-       intermediatePressTurbine.stopRotation.assertUncompromised();
+       intermediatePressTurbine.stopRotation.assertCompromisedInstantaneouslyFrom(generator.stopConnectedTurbines);
        intermediatePressTurbine.systemFailure.assertUncompromised();
        lowPressTurbine.stopRotation.assertCompromisedInstantaneously();
        lowPressTurbine.systemFailure.assertCompromisedInstantaneously();
